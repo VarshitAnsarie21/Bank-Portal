@@ -12,7 +12,7 @@ const Header = () => {
       <Layout.Header className="page-header">
         <Row align="middle" justify="center">
           <Col span={24}>
-            <img className="cog-img" src={logo} />
+            <img className="cog-img" src={logo} alt="cognizant-logo" />
             <Title className="title">BANK PORTAL</Title>
           </Col>
         </Row>
