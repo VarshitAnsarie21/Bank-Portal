@@ -90,6 +90,7 @@
   color: #294c7c;
   font-weight: bold;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .home-carousel {
