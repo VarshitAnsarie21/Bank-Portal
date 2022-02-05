@@ -1,8 +1,11 @@
 .home-page {
   font-family: GlacialIndifference;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
+  background-image: url('https://th.bing.com/th/id/R.3ed22d3b73876672ffc037e6a99562eb?rik=foEb1%2bTFdmzm9w&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f11%2fFlat-Design-Wallpapers-HD.png&ehk=i%2fLteHo%2bfNLS12%2fGghfPdxd6HJ8J0UaHN5R%2fvhg5SnA%3d&risl=&pid=ImgRaw&r=0');
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  padding-bottom: 80px;
+  background-size: cover;
 }
 
 .home-page-inner-container {
@@ -13,19 +16,21 @@
 .home-page-admin-card {
   width: 100%;
   height: 100%;
-  margin: 40px;
+  margin-top: 40px;
+  margin-right: 100px;
   padding: 10px;
   border-radius: 20px;
-  background: #F8F0E3;
+  background: #f8f0e3;
 }
 
 .home-page-customer-card {
   width: 100%;
   height: 100%;
-  margin: 40px;
+  margin-top: 40px;
+  margin-right: 80px;
   padding: 10px;
   border-radius: 20px;
-  background: #F8F0E3;
+  background: #f8f0e3;
 }
 
 .home-page-inner-container .css-o69gx8-MuiCardMedia-root {
@@ -33,8 +38,7 @@
 }
 
 .home-page-input {
-  height: 45px;
-  width: 400px;
+  height: 45px;  width: 400px;
   outline: none;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -76,14 +80,51 @@
   background: #71b7e6;
 }
 
-.home-page-text{
-    font-size: 16px;
-    font-family: GlacialIndifference;
+.home-page-text {
+  font-size: 16px;
+  font-family: GlacialIndifference;
 }
 
-.home-page-hyperlink{
-    font-size: 18px;
-    color: #294c7c;
-    font-weight: bold;
-    text-decoration: none;
+.home-page-hyperlink {
+  font-size: 18px;
+  color: #294c7c;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.home-carousel {
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  margin-top: 100px;
+}
+
+.home-carousel .banner1 {
+  background-image: url("../images/banner1.jpg");
+  width: 70%;
+  height: 275px;
+}
+
+.home-carousel .banner2 {
+  background-image: url("../images/banner2.jpeg");
+  width: 70%;
+  height: 275px;
+}
+
+.home-carousel .banner3 {
+  background-image: url("../images/banner3.jpeg");
+  width: 70%;
+  height: 275px;
+}
+
+.home-carousel .banner4 {
+  background-image: url("../images/banner4.jpeg");
+  width: 70%;
+  height: 275px;
+}
+
+.home-carousel .banner5 {
+  background-image: url("../images/banner5.jpeg");
+  width: 70%;
+  height: 275px;
 }

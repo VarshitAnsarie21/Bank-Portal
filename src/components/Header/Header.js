@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Row, Col, Typography } from "antd";
-import logo from "../images/cog-logo.png";
+import logo from '../../images/cog-logo.png';
 import "./Header.css";
 import * as ReactBootStrap from "react-bootstrap";
 
