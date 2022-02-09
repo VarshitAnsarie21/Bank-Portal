@@ -104,28 +104,33 @@
   background-image: url("../../images/banner1.jpg");
   width: 70%;
   height: 275px;
+  align-content: center;
 }
 
-.home-carousel .banner2 {
-  background-image: url("../../images/banner2.jpeg");
-  width: 70%;
-  height: 275px;
-}
+    .home-carousel .banner2 {
+        background-image: url("../../images/banner2.jpeg");
+        width: 70%;
+        height: 275px;
+        align-content: center;
+    }
 
-.home-carousel .banner3 {
-  background-image: url("../../images/banner3.jpeg");
-  width: 70%;
-  height: 275px;
-}
+    .home-carousel .banner3 {
+        background-image: url("../../images/banner3.jpeg");
+        width: 70%;
+        height: 275px;
+        align-content: center;
+    }
 
-.home-carousel .banner4 {
-  background-image: url("../../images/banner4.jpeg");
-  width: 70%;
-  height: 275px;
-}
+    .home-carousel .banner4 {
+        background-image: url("../../images/banner4.jpeg");
+        width: 70%;
+        height: 275px;
+        align-content: center;
+    }
 
-.home-carousel .banner5 {
-  background-image: url("../../images/banner5.jpeg");
-  width: 70%;
-  height: 275px;
-}
+    .home-carousel .banner5 {
+        background-image: url("../../images/banner5.jpeg");
+        width: 70%;
+        height: 275px;
+        align-content: center;
+    }
