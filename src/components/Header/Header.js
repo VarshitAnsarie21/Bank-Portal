@@ -1,10 +1,10 @@
 import React from "react";
 import { Layout, Row, Col, Typography } from "antd";
-import logo from '../../images/cog-logo.png';
+import logo from "../../images/cog-logo.png";
 import "./Header.css";
 import * as ReactBootStrap from "react-bootstrap";
 
-const { Link, Title } = Typography;
+const { Title } = Typography;
 
 const Header = () => {
   return (
@@ -30,21 +30,19 @@ const Header = () => {
           <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
             <ReactBootStrap.Nav className="me-auto">
-              <ReactBootStrap.Nav.Link href="#features">
-                Home
-              </ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link href="#pricing">
+              <ReactBootStrap.Nav.Link href="/">Home</ReactBootStrap.Nav.Link>
+              <ReactBootStrap.Nav.Link href="/registration">
                 Registration
               </ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link href="#pricing">
+              <ReactBootStrap.Nav.Link href="/exchange-rate">
                 Exchange Rate
               </ReactBootStrap.Nav.Link>
             </ReactBootStrap.Nav>
             <ReactBootStrap.Nav>
-              <ReactBootStrap.Nav.Link href="#deets">
+              <ReactBootStrap.Nav.Link href="/about-us">
                 About Us
               </ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link eventKey={2} href="#memes">
+              <ReactBootStrap.Nav.Link eventKey={2} href="contact-us">
                 Contact Us
               </ReactBootStrap.Nav.Link>
             </ReactBootStrap.Nav>

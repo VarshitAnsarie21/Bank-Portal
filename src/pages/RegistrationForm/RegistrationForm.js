@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import "./RegistrationForm.css"
+import "./RegistrationForm.css";
+import {Row, Col, Input, Button, Typography} from 'antd'
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+
+const { Text } = Typography;
 
 class RegistrationForm extends Component {
   constructor(props) {
@@ -99,7 +105,10 @@ class RegistrationForm extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="registration-form-container">
+        <Col>
+        <Row justify='center' align='middle'>
+        <Card className="registration-form-card">
         <div className="title">Registration</div>
         <div className="content">
           <form onSubmit={this.handleSubmit}>
@@ -213,6 +222,9 @@ class RegistrationForm extends Component {
             </div>
           </form>
         </div>
+        </Card>
+        </Row>
+        </Col>
       </div>
     );
   }

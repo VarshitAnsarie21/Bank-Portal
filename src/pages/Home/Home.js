@@ -36,7 +36,7 @@ const Home = () => {
                 alt="green iguana"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h5" component="div" className="home-page-title">
                   Admin Login
                 </Typography>
                 <Input
@@ -56,12 +56,12 @@ const Home = () => {
                 <Text className="home-page-text">
                   Not a Registered Admin?
                 </Text>{" "}
-                <a className="home-page-hyperlink">Sign Up</a>
+                <a className="home-page-hyperlink" href="/registration">Sign Up</a>
                 <hr />
                 <Text className="home-page-text">
                   Reset Your PassWord!
                 </Text>{" "}
-                <a className="home-page-hyperlink">Here</a>
+                <a className="home-page-hyperlink" href="/reset-password">Here</a>
               </CardContent>
             </Card>
           </Col>
@@ -74,7 +74,7 @@ const Home = () => {
                 alt="green iguana"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h5" component="div" className="home-page-title">
                   Customer Login
                 </Typography>
                 <Input
@@ -94,12 +94,12 @@ const Home = () => {
                 <Text className="home-page-text">
                   Not a Registered Customer?
                 </Text>{" "}
-                <a className="home-page-hyperlink">Sign Up</a>
+                <a className="home-page-hyperlink" href="/registration">Sign Up</a>
                 <hr />
                 <Text className="home-page-text">
                   Reset Your PassWord!
                 </Text>{" "}
-                <a className="home-page-hyperlink">Here</a>
+                <a className="home-page-hyperlink" href="/reset-password">Here</a>
               </CardContent>
             </Card>
           </Col>

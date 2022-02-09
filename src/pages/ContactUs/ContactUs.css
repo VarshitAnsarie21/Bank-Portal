@@ -61,7 +61,6 @@
 .contact-us-page .contact-us-col {
   display: grid !important;
   justify-content: center;
-  margin-left: 100px;
 }
 
 .contact-us-page .ant-card-meta-title {
@@ -137,21 +136,21 @@
 }
 
 .contact-us-page .complaint-types-dropdown .dropdown-toggle::after {
-  margin-left: 24.2em;
   vertical-align: 0.255em;
   border-top: 0.3em solid;
   border-right: 0.3em solid transparent;
   border-bottom: 0;
   border-left: 0.3em solid transparent;
+  margin-left: 400px;
 }
 
 .contact-us-page .dropdown-toggle::after {
-  margin-left: 24.255em;
   vertical-align: 0.255em;
   border-top: 0.3em solid;
   border-right: 0.3em solid transparent;
   border-bottom: 0;
   border-left: 0.3em solid transparent;
+  margin-left: 400px;
 }
 
 .contact-us-page .contact-us-page-submit-button {
@@ -166,7 +165,6 @@
   font-weight: 500;
   letter-spacing: 1px;
   border-radius: 5px;
-  margin-left: 100px;
 }
 
 .contact-us-page .contact-us-page-submit-button:hover {
@@ -197,7 +195,6 @@
 }
 
 .feedback-col {
-  margin-left: 50px;
   display: grid !important;
   justify-content: center;
 }
@@ -247,8 +244,7 @@
   color: #fff !important;
   font-size: 22px !important;
   margin-top: 15px;
-  width: 60%;
-  margin-left: 300px !important;
+  width: 100%;
 }
 
 .contact-us-page hr {

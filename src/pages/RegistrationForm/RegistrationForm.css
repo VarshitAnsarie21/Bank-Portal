@@ -1,66 +1,54 @@
  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-.container * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-.container body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
-
-.container {
-  max-width: 700px;
+.registration-form-container {
+  font-family: GlacialIndifference;
+  background-image: url("../../images/background-image.png");
   width: 100%;
-  background-color: #fff;
-  padding: 25px 30px;
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  height: 100%;
+  padding-bottom: 80px;
+  padding-top: 80px;
+  background-size: cover;
+  justify-content: center !important;
 }
 
-.container .title {
-  font-size: 25px;
+.registration-form-container .registration-form-card {
+  width: 50%;
+  height: 100%;
+  padding: 25px 30px;
+  border: none !important;
+  margin-left: 490px;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.registration-form-container .title {
+  font-size: 40px;
   font-weight: 500;
   position: relative;
+  color: #fff;
 }
 
-.container .title::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 30px;
-  border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
-
-.content form .user-details {
+.registration-form-container .content form .user-details {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
 
-form .user-details .input-box {
+.registration-form-container form .user-details .input-box {
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
 }
 
-form .input-box span.details {
+.registration-form-container form .input-box span.details {
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-.user-details .input-box input {
+.registration-form-container .user-details .input-box input {
   height: 45px;
   width: 100%;
   outline: none;
@@ -72,19 +60,19 @@ form .input-box span.details {
   transition: all 0.3s ease;
 }
 
-.user-details .input-box input:focus,
+.registration-form-container .user-details .input-box input:focus,
 .user-details .input-box input:valid {
   border-color: #9b59b6;
 }
 
-form .button {
+.registration-form-container form .button {
   height: 45px;
-  margin: 35px 0;
+  margin: 65px 0;
 }
 
-form .button input {
+.registration-form-container form .button input {
   height: 100%;
-  width: 100%;
+  width: 20%;
   border-radius: 5px;
   border: none;
   color: #fff;
@@ -93,15 +81,27 @@ form .button input {
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: #9b59b6;
 } 
 
-/* form .button input:hover { */
-  /* transform: scale(0.99); */
-  /* background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+.registration-form-container form .button input:hover { 
+  transform: scale(0.99); 
+  background: #71b7e6;
 }
 
-@media (max-width: 584px) {
+.registration-form-container option{
+  width: 428px  !important;
+  border-radius: 5px !important;
+}
+
+.registration-form-container select{
+  width: 428px  !important;
+  height: 45px !important;
+  padding: 10px;
+  border-radius: 5px !important;
+}
+
+/* @media (max-width: 584px) {
   .container {
     max-width: 100%;
   }
@@ -126,7 +126,7 @@ form .button input {
 } */
 
 @media (max-width: 459px) {
-  .container .content .category {
+  .registration-form-container .content .category {
     flex-direction: column;
   }
 }
