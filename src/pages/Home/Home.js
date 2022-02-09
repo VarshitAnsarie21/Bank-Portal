@@ -4,14 +4,14 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import "./Home.css";
-import Admin from "../images/admin-logo.jpg";
-import Customer from "../images/customer-logo.png";
+import Admin from "../../images/admin-logo.jpg";
+import Customer from "../../images/customer-logo.png";
 import "react-alice-carousel/lib/react-alice-carousel";
-import banner1 from "../images/banner1.jpg";
-import banner2 from "../images/banner2.jpeg";
-import banner3 from "../images/banner3.jpeg";
-import banner4 from "../images/banner4.jpeg";
-import banner5 from "../images/banner5.jpeg";
+import banner1 from "../../images/banner1.jpg"
+import banner2 from "../../images/banner2.jpeg";
+import banner3 from "../../images/banner3.jpeg";
+import banner4 from "../../images/banner4.jpeg";
+import banner5 from "../../images/banner5.jpeg";
 import Carousel from "react-bootstrap/Carousel";
 
 const { Text } = Typography;
