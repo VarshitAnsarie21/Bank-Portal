@@ -6,8 +6,6 @@ import CardMedia from "@mui/material/CardMedia";
 import "./ResetPassword.css";
 import ResetPasswordLogo from "../../images/reset-password.jpg";
 
-const { Text } = Typography;
-
 const ResetPassword = () => {
   const [index, setIndex] = useState(0);
 

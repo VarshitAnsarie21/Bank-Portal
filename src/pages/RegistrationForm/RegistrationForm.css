@@ -101,6 +101,19 @@
   border-radius: 5px !important;
 }
 
+.registration-form-container .error-message-div{
+ font-size: 15px;
+ color: #fff;
+ background: #c83739;
+ opacity: 0.7;
+ width: 420px;
+ margin: 2px;
+ padding: 5px;
+ padding-left: 20px;
+ border-radius: 5px; 
+ text-align: left !important;
+}
+
 /* @media (max-width: 584px) {
   .container {
     max-width: 100%;

@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import "./RegistrationForm.css";
-import { Row, Col, Input, Button, Typography } from "antd";
+import { Row, Col } from "antd";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+import validator from "validator";
 
-const { Text } = Typography;
-
-let isValid;
+let error = "";
 
 class RegistrationForm extends Component {
   constructor(props) {
@@ -23,15 +20,28 @@ class RegistrationForm extends Component {
       cardNumb: "",
       occupation: "",
       gender: "",
+      errorMessage: "",
+      emailErrorMessage: "",
+      nameErrorMessage: "",
+      phoneErrorMessage: "",
+      passwordErrorMessage: "",
+      accNumberErrorMessage: "",
+      cardNumberErrorMessage: "",
+      dateErrorMessage: "",
+      addressErrorMessage: "",
+      occupationErrorMessage: "",
+      genderErrorMessage: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   changeHandler = (e) => {
+    this.setState({ errorMessage: "" });
     this.setState({ [e.target.name]: e.target.value });
   };
 
   validation = () => {
+    let isValid = true;
     if (
       !this.state.custName &&
       !this.state.accNumb &&
@@ -45,35 +55,104 @@ class RegistrationForm extends Component {
       !this.state.gender
     ) {
       isValid = false;
-    } else if (
-      !this.state.custName ||
-      !this.state.accNumb ||
-      !this.state.email ||
-      !this.state.phoneNumb ||
-      !this.state.password ||
-      !this.state.date ||
-      !this.state.address ||
-      !this.state.cardNumb ||
-      !this.state.occupation ||
-      !this.state.gender
-    ) {
-      isValid = false;
-    }else if(!this.state.custName.length() > 50){
-      isValid = false;
-    }else if(!this.state.length() > 15){
-      isValid = false;
-    }else{
-      isValid = true;
+      error = "Fill the fields";
+      this.setState({ errorMessage: error });
+    } else {
+      if (
+        this.state.email &&
+        (!validator.isEmail(this.state.email) ||
+          /[!#$%^&*.,()?"":{}|<>]/g.test(this.state.email) ||
+          this.state.email.includes("g.com"))
+      ) {
+        isValid = false;
+        error = "Invalid Email !";
+        this.setState({ emailErrorMessage: error });
+      }
+      if (
+        this.state.phoneNumb &&
+        (/[!@#$%^&*.,()?"":{}|<>]/g.test(this.state.phoneNumb) ||
+          /^[A-Z a-z]/.test(this.state.phoneNumb))
+      ) {
+        isValid = false;
+        error = "Invalid Phone Number! Enter only Numbers";
+        this.setState({ phoneErrorMessage: error });
+      }
+      if (this.state.password && this.state.password.length > 25) {
+        isValid = false;
+        error = "Password should be upto 25 characters";
+        this.setState({ passwordErrorMessage: error });
+      }
+      if (
+        this.state.phoneNumb &&
+        /^[0-9]/.test(this.state.phoneNumb) &&
+        (this.state.phoneNumb.length > 10 ||
+          this.state.phoneNumb.length < 10 ||
+          this.state.phoneNumb.charAt(0) === "0")
+      ) {
+        isValid = false;
+        error = "Phone Number should be of 10 digits";
+        this.setState({ phoneErrorMessage: error });
+      }
+      if (this.state.custName && this.state.custName.length > 50) {
+        isValid = false;
+        error = "customer name should be upto 50 characters";
+        this.setState({ nameErrorMessage: error });
+      }
+      if (this.state.custName && this.state.custName.length > 50) {
+        isValid = false;
+        error = "address should be upto 50 characters";
+        this.setState({ nameErrorMessage: error });
+      }
+      if (
+        this.state.accNumb &&
+        (this.state.accNumb.length > 18 || this.state.accNumb.length < 9)
+      ) {
+        isValid = false;
+        error = "account number's length should be of 9 to 15 characters";
+        this.setState({ accNumberErrorMessage: error });
+      }
+      if (
+        !this.state.custName ||
+        !this.state.accNumb ||
+        !this.state.email ||
+        !this.state.phoneNumb ||
+        !this.state.password ||
+        !this.state.date ||
+        !this.state.address ||
+        !this.state.cardNumb ||
+        !this.state.occupation ||
+        !this.state.gender
+      ) {
+        isValid = false;
+        error = "Fill this fields";
+        this.setState({ errorMessage: error });
+      } else if (
+        this.state.custName &&
+        this.state.accNumb &&
+        this.state.email &&
+        validator.isEmail(this.state.email) &&
+        this.state.phoneNumb &&
+        validator.isMobilePhone(this.state.phoneNumb) &&
+        this.state.password &&
+        this.state.date &&
+        this.state.address &&
+        this.state.cardNumb &&
+        this.state.occupation &&
+        this.state.gender
+      ) {
+        error = "";
+        isValid = true;
+      }
     }
 
-    return isValid
+    return isValid;
   };
 
   handleSubmit = (event) => {
-    if(this.validation()){
-      alert('Registered Successfully !')
-    }else{
-      alert('incorrect details! Fill the detail again')
+    if (this.validation()) {
+      alert("Registered Successfully !");
+    } else {
+      alert("incorrect details! Fill the detail again");
     }
     // alert(
     //   `${this.state.custName} ${this.state.accNumb}  Registered Successfully !!!!`
@@ -104,6 +183,17 @@ class RegistrationForm extends Component {
       cardNumb,
       occupation,
       gender,
+      errorMessage,
+      nameErrorMessage,
+      emailErrorMessage,
+      phoneErrorMessage,
+      passwordErrorMessage,
+      dateErrorMessage,
+      accNumberErrorMessage,
+      addressErrorMessage,
+      occupationErrorMessage,
+      genderErrorMessage,
+      cardNumberErrorMessage,
     } = this.state;
     return (
       <div className="registration-form-container">
@@ -124,6 +214,14 @@ class RegistrationForm extends Component {
                         placeholder="CustomerFullName..."
                       />
                       <br />
+                      {nameErrorMessage && (
+                        <div className="error-message-div">
+                          {nameErrorMessage}
+                        </div>
+                      )}
+                      {errorMessage && !custName && (
+                        <div className="error-message-div">{errorMessage}</div>
+                      )}
                     </div>
                     <div className="input-box">
                       <span className="details">Account Number</span>
@@ -135,6 +233,14 @@ class RegistrationForm extends Component {
                         placeholder="AccountNumber..."
                       />
                       <br />
+                      {accNumberErrorMessage && (
+                        <div className="error-message-div">
+                          {accNumberErrorMessage}
+                        </div>
+                      )}
+                      {errorMessage && !accNumb && (
+                        <div className="error-message-div">{errorMessage}</div>
+                      )}
                     </div>
                     <div className="input-box">
                       <span className="details">Email</span>
@@ -146,6 +252,14 @@ class RegistrationForm extends Component {
                         placeholder="Email Address.."
                       />
                       <br />
+                      {emailErrorMessage && (
+                        <div className="error-message-div">
+                          {emailErrorMessage}
+                        </div>
+                      )}
+                      {errorMessage && !email && (
+                        <div className="error-message-div">{errorMessage}</div>
+                      )}
                     </div>
                     <div className="input-box">
                       <span className="details">Phone Number</span>
@@ -157,6 +271,14 @@ class RegistrationForm extends Component {
                         placeholder="Phone Number..."
                       />
                       <br />
+                      {phoneErrorMessage && (
+                        <div className="error-message-div">
+                          {phoneErrorMessage}
+                        </div>
+                      )}
+                      {errorMessage && !phoneNumb && (
+                        <div className="error-message-div">{errorMessage}</div>
+                      )}
                     </div>
                     <div className="input-box">
                       <span className="details">Password</span>
@@ -168,6 +290,14 @@ class RegistrationForm extends Component {
                         placeholder="Password..."
                       />
                       <br />
+                      {passwordErrorMessage && (
+                        <div className="error-message-div">
+                          {passwordErrorMessage}
+                        </div>
+                      )}
+                      {errorMessage && !password && (
+                        <div className="error-message-div">{errorMessage}</div>
+                      )}
                     </div>
                     <div className="input-box">
                       <span className="details">DOB</span>
@@ -179,6 +309,14 @@ class RegistrationForm extends Component {
                         placeholder="DOB..."
                       />
                       <br />
+                      {dateErrorMessage && (
+                        <div className="error-message-div">
+                          {dateErrorMessage}
+                        </div>
+                      )}
+                      {errorMessage && !date && (
+                        <div className="error-message-div">{errorMessage}</div>
+                      )}
                     </div>
                     <div className="input-box">
                       <span className="details">Address</span>
@@ -190,6 +328,14 @@ class RegistrationForm extends Component {
                         placeholder="Address..."
                       />
                       <br />
+                      {addressErrorMessage && (
+                        <div className="error-message-div">
+                          {addressErrorMessage}
+                        </div>
+                      )}
+                      {errorMessage && !address && (
+                        <div className="error-message-div">{errorMessage}</div>
+                      )}
                     </div>
                     <div className="input-box">
                       <span className="details">Card Number</span>
@@ -201,6 +347,14 @@ class RegistrationForm extends Component {
                         placeholder="CardNumber..."
                       />
                       <br />
+                      {cardNumberErrorMessage && (
+                        <div className="error-message-div">
+                          {cardNumberErrorMessage}
+                        </div>
+                      )}
+                      {errorMessage && !cardNumb && (
+                        <div className="error-message-div">{errorMessage}</div>
+                      )}
                     </div>
                     <div className="input-box">
                       <span className="details">Occupation</span>
@@ -212,6 +366,14 @@ class RegistrationForm extends Component {
                         placeholder="Occupation..."
                       />
                       <br />
+                      {occupationErrorMessage && (
+                        <div className="error-message-div">
+                          {occupationErrorMessage}
+                        </div>
+                      )}
+                      {errorMessage && !occupation && (
+                        <div className="error-message-div">{errorMessage}</div>
+                      )}
                     </div>
                     <div className="input-box">
                       <span className="details">Gender</span>
@@ -226,6 +388,14 @@ class RegistrationForm extends Component {
                         <option value="female">Female</option>
                       </select>
                       <br />
+                      {genderErrorMessage && (
+                        <div className="error-message-div">
+                          {genderErrorMessage}
+                        </div>
+                      )}
+                      {errorMessage && !gender && (
+                        <div className="error-message-div">{errorMessage}</div>
+                      )}
                     </div>
                   </div>
 
