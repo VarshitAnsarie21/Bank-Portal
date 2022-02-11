@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { Row, Col, Button, Typography } from "antd";
-import Dropdown from "react-bootstrap/Dropdown";
+import React from "react";
+import { Row, Col, Button, Typography, Select } from "antd";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Marquee from "react-fast-marquee";
 import "./ContactUs.css";
 
 const { Text, Title } = Typography;
+
+const { Option } = Select;
 
 const ContactUs = () => {
   return (
@@ -21,37 +22,45 @@ const ContactUs = () => {
             <Text className="contact-us-dropdown-label">
               Raise Request / Complaint Types:{" "}
             </Text>
-            <Dropdown className="complaint-types-dropdown">
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                --Select--
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">
-                  Raise Complaint or Request
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <select
+              // onChange={this.changeHandler}
+              // name="gender"
+              // value={gender}
+              className="first-dropdown"
+            >
+              <option defaultValue className="option">
+                -Select-
+              </option>
+              <option value="raiseComplaint">Raise Complaint or Request</option>
+            </select>
           </Row>
           <Row justify="center" align="middle" className="second-dropdown-row">
             <Text className="contact-us-dropdown-label">
               Raise Request / Complaint:{" "}
             </Text>
-            <Dropdown className="complaint-dropdown">
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                --Select--
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Digital Payment</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">About Withdraw</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">About Deposit</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">
-                  About Exchange Rate
-                </Dropdown.Item>
-                <Dropdown.Item href="#/action-3">About MyAccount</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <select
+              // onChange={this.changeHandler}
+              // name="gender"
+              // value={gender}
+              className="second-dropdown"
+            >
+              <option defaultValue>-Select-</option>
+              <option value="raiseComplaint" className="option">
+                Digital Payment
+              </option>
+              <option value="raiseComplaint" className="option">
+                About Withdraw
+              </option>
+              <option value="raiseComplaint" className="option">
+                About Deposit
+              </option>
+              <option value="raiseComplaint" className="option">
+                About Exchange Rate
+              </option>
+              <option value="raiseComplaint" className="option">
+                About MyAccount
+              </option>
+            </select>
           </Row>
           <Row>
             <Button type="primary" className="contact-us-page-submit-button">

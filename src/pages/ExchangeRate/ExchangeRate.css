@@ -1,0 +1,38 @@
+.exchange-rate-page {
+  font-family: GlacialIndifference;
+  background-image: url("../../images/background-image.png") !important;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 20px;
+  background-size: cover;
+  min-height: 100vh;
+  display: block !important;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.exchange-rate-title {
+  font-family: GlacialIndifference;
+  font-size: 60px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.exchange-rate-input {
+  height: 45px;
+  width: 400px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  font-size: 18px;
+  margin: 20px 0px 12px 0px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.exchange-rate-page .exchange-rate-input:focus {
+  border-color: #9b59b6;
+}

@@ -8,6 +8,7 @@ import RegistrationForm from "./pages/RegistrationForm/RegistrationForm";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ExchangeRate from "./pages/ExchangeRate/ExchangeRate";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          {/* <Route path="/exchange-rate" element={<ContactUs />} /> */}
+          <Route path="/exchange-rate" element={<ExchangeRate />} />
           <Route path="/registration" element={<RegistrationForm />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/about-us" element={<AboutUs />} />

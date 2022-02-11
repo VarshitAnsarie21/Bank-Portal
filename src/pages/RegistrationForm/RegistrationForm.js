@@ -36,7 +36,19 @@ class RegistrationForm extends Component {
   }
 
   changeHandler = (e) => {
-    this.setState({ errorMessage: "" });
+    this.setState({
+      errorMessage: "",
+      emailErrorMessage: "",
+      nameErrorMessage: "",
+      phoneErrorMessage: "",
+      passwordErrorMessage: "",
+      accNumberErrorMessage: "",
+      cardNumberErrorMessage: "",
+      dateErrorMessage: "",
+      addressErrorMessage: "",
+      occupationErrorMessage: "",
+      genderErrorMessage: "",
+    });
     this.setState({ [e.target.name]: e.target.value });
   };
 

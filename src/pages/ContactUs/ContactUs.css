@@ -76,6 +76,7 @@
 .contact-us-page .second-dropdown-row {
   display: inline-flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .contact-us-page .contact-us-dropdown-label {
@@ -251,4 +252,29 @@
   color: #fff;
   margin-left: 80px;
   margin-right: 80px;
+}
+
+.contact-us-page .first-dropdown-row .second-dropdown-row option{
+  width: 425px !important;
+  border-radius: 5px !important;
+}
+
+.contact-us-page .first-dropdown{
+  width: 428px  !important;
+  height: 40px !important;
+  padding: 10px;
+  border-radius: 5px !important;
+  margin-top: 45px;
+  margin-left: 15px;
+  border: #fff !important;
+}
+
+.contact-us-page .second-dropdown{
+  width: 428px  !important;
+  height: 40px !important;
+  padding: 10px;
+  border-radius: 5px !important;
+  margin-top: 45px;
+  margin-left: 66px;
+  border: #fff !important;
 }
