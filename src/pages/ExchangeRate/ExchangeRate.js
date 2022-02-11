@@ -56,7 +56,6 @@ const ExchangeRate = () => {
         <h1 className="exchange-rate-title">Exchange Rates</h1>
         <input
           value={searchTerm}
-          className={styles.input}
           placeholder="Search..."
           onChange={onSearch}
           className="exchange-rate-input"

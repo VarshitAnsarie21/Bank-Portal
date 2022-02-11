@@ -1,13 +1,11 @@
 import React from "react";
-import { Row, Col, Button, Typography, Select } from "antd";
+import { Row, Col, Button, Typography } from "antd";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Marquee from "react-fast-marquee";
 import "./ContactUs.css";
 
 const { Text, Title } = Typography;
-
-const { Option } = Select;
 
 const ContactUs = () => {
   return (
