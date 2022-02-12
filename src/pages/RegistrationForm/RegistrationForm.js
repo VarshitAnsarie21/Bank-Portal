@@ -179,25 +179,40 @@ class RegistrationForm extends Component {
 
   handleSubmit = (event) => {
     if (this.validation()) {
-      alert("Registered Successfully !");
+      let data = {
+        full_name: this.state.full_name,
+        acc_no: this.state.acc_no,
+        email: this.state.email,
+        password: this.state.password,
+        phone_no: this.state.phone_no,
+        dob: this.state.dob,
+        address: this.state.address,
+        occupation: this.state.occupation,
+        card_number: this.state.card_number,
+        gender: this.state.gender,
+      };
+      fetch("http://localhost:9191/createQuestionWithOptions", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then((resp) => {
+        if (resp.status === 200) {
+          resp.json().then((result) => {
+            console.warn("result", result);
+            alert("Successfully Registered");
+          });
+        } else if (resp.status >= 400 && resp.status < 500) {
+          alert("Status code " + resp.status + "!Bad Request");
+        } else if (resp.status >= 500 && resp.status < 600) {
+          alert("Status code " + resp.status + "!Internal Server Error");
+        }
+      });
     } else {
-      alert("Incorrect details! Fill the detail again");
+      console.log(error);
     }
-    // alert(
-    //   `${this.state.custName} ${this.state.accNumb}  Registered Successfully !!!!`
-    // );
-    // console.log(this.state);
-    // this.setState({
-    //   custName: "",
-    //   accNumb: "",
-    //   email: "",
-    //   password: "",
-    //   phoneNumb: "",
-    //   gender: "",
-    //   date: "",
-    //   occupation: "",
-    // });
-    event.preventDefault();
   };
 
   render() {
