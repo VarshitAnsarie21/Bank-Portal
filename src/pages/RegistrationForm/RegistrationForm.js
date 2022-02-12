@@ -8,8 +8,8 @@ import "./RegistrationForm.css";
 let error = "";
 
 const genders = [
-  { value: "male", label: "Male" },
-  { value: "female", label: "Female" },
+  { value: "female", label: "Male" },
+  { value: "male", label: "Female" },
 ];
 
 class RegistrationForm extends Component {
@@ -57,6 +57,11 @@ class RegistrationForm extends Component {
     });
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  changeGender = (selectedGender) =>{
+    this.setState({gender: selectedGender.value})
+    console.log(this.state.gender)
+  }
 
   validation = () => {
     let isValid = true;
@@ -191,7 +196,7 @@ class RegistrationForm extends Component {
         card_number: this.state.card_number,
         gender: this.state.gender,
       };
-      fetch("http://localhost:9191/createQuestionWithOptions", {
+      fetch("http://localhost:61476/api/customer/InsertCustomer", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -422,11 +427,10 @@ class RegistrationForm extends Component {
                     <div className="input-box">
                       <span className="details">Gender</span>
                       <Select
-                        name="gender"
-                        value={gender}
+                        value={genders.find(x => x.value === gender)}
                         className="registration-form-dropdown"
                         options={genders}
-                        onChange={this.changeHandler}
+                        onChange={this.changeGender}
                       />
                       {/* <select
                         onChange={this.changeHandler}
