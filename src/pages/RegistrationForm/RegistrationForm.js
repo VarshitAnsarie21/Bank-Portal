@@ -16,14 +16,14 @@ class RegistrationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      custName: "",
-      accNumb: "",
+      full_name: "",
+      acc_no: "",
       email: "",
-      phoneNumb: "",
+      phone_no: "",
       password: "",
-      date: "",
+      dob: "",
       address: "",
-      cardNumb: "",
+      card_number: "",
       occupation: "",
       gender: "",
       errorMessage: "",
@@ -61,14 +61,14 @@ class RegistrationForm extends Component {
   validation = () => {
     let isValid = true;
     if (
-      !this.state.custName &&
-      !this.state.accNumb &&
+      !this.state.full_name &&
+      !this.state.acc_no &&
       !this.state.email &&
-      !this.state.phoneNumb &&
+      !this.state.phone_no &&
       !this.state.password &&
-      !this.state.date &&
+      !this.state.dob &&
       !this.state.address &&
-      !this.state.cardNumb &&
+      !this.state.card_number &&
       !this.state.occupation &&
       !this.state.gender
     ) {
@@ -87,9 +87,9 @@ class RegistrationForm extends Component {
         this.setState({ emailErrorMessage: error });
       }
       if (
-        this.state.phoneNumb &&
-        (/[!@#$%^&*.,()?"":{}|<>]/g.test(this.state.phoneNumb) ||
-          /^[A-Z a-z]/.test(this.state.phoneNumb))
+        this.state.phone_no &&
+        (/[!@#$%^&*.,()?"":{}|<>]/g.test(this.state.phone_no) ||
+          /^[A-Z a-z]/.test(this.state.phone_no))
       ) {
         isValid = false;
         error = "Invalid Phone Number! Enter only Numbers";
@@ -112,43 +112,43 @@ class RegistrationForm extends Component {
         this.setState({ passwordErrorMessage: error });
       }
       if (
-        this.state.phoneNumb &&
-        /^[0-9]/.test(this.state.phoneNumb) &&
-        (this.state.phoneNumb.length > 10 ||
-          this.state.phoneNumb.length < 10 ||
-          this.state.phoneNumb.charAt(0) === "0")
+        this.state.phone_no &&
+        /^[0-9]/.test(this.state.phone_no) &&
+        (this.state.phone_no.length > 10 ||
+          this.state.phone_no.length < 10 ||
+          this.state.phone_no.charAt(0) === "0")
       ) {
         isValid = false;
         error = "Phone Number should be of 10 digits";
         this.setState({ phoneErrorMessage: error });
       }
-      if (this.state.custName && this.state.custName.length > 50) {
+      if (this.state.full_name && this.state.full_name.length > 50) {
         isValid = false;
         error = "customer name should be upto 50 characters";
         this.setState({ nameErrorMessage: error });
       }
-      if (this.state.custName && this.state.custName.length > 50) {
+      if (this.state.address && this.state.address.length > 50) {
         isValid = false;
         error = "address should be upto 50 characters";
-        this.setState({ nameErrorMessage: error });
+        this.setState({ addressErrorMessage: error });
       }
       if (
-        this.state.accNumb &&
-        (this.state.accNumb.length > 18 || this.state.accNumb.length < 9)
+        this.state.acc_no &&
+        (this.state.acc_no.length > 18 || this.state.acc_no.length < 9)
       ) {
         isValid = false;
         error = "account number's length should be of 9 to 15 characters";
         this.setState({ accNumberErrorMessage: error });
       }
       if (
-        !this.state.custName ||
-        !this.state.accNumb ||
+        !this.state.full_name ||
+        !this.state.acc_no ||
         !this.state.email ||
-        !this.state.phoneNumb ||
+        !this.state.phone_no ||
         !this.state.password ||
-        !this.state.date ||
+        !this.state.dob ||
         !this.state.address ||
-        !this.state.cardNumb ||
+        !this.state.card_number ||
         !this.state.occupation ||
         !this.state.gender
       ) {
@@ -156,16 +156,16 @@ class RegistrationForm extends Component {
         error = "Fill this fields";
         this.setState({ errorMessage: error });
       } else if (
-        this.state.custName &&
-        this.state.accNumb &&
+        this.state.full_name &&
+        this.state.acc_no &&
         this.state.email &&
         validator.isEmail(this.state.email) &&
-        this.state.phoneNumb &&
+        this.state.phone_no &&
         validator.isMobilePhone(this.state.phoneNumb) &&
         this.state.password &&
-        this.state.date &&
+        this.state.dob &&
         this.state.address &&
-        this.state.cardNumb &&
+        this.state.card_number &&
         this.state.occupation &&
         this.state.gender
       ) {
@@ -202,14 +202,14 @@ class RegistrationForm extends Component {
 
   render() {
     const {
-      custName,
-      accNumb,
+      full_name,
+      acc_no,
       email,
-      phoneNumb,
+      phone_no,
       password,
-      date,
+      dob,
       address,
-      cardNumb,
+      card_number,
       occupation,
       gender,
       errorMessage,
@@ -237,8 +237,8 @@ class RegistrationForm extends Component {
                       <span className="details">Full Name</span>
                       <input
                         type="text"
-                        value={custName}
-                        name="custName"
+                        value={full_name}
+                        name="full_name"
                         onChange={this.changeHandler}
                         placeholder="CustomerFullName..."
                       />
@@ -248,7 +248,7 @@ class RegistrationForm extends Component {
                           {nameErrorMessage}
                         </div>
                       )}
-                      {errorMessage && !custName && (
+                      {errorMessage && !full_name && (
                         <div className="error-message-div">{errorMessage}</div>
                       )}
                     </div>
@@ -256,8 +256,8 @@ class RegistrationForm extends Component {
                       <span className="details">Account Number</span>
                       <input
                         type="text"
-                        value={accNumb}
-                        name="accNumb"
+                        value={acc_no}
+                        name="acc_no"
                         onChange={this.changeHandler}
                         placeholder="AccountNumber..."
                       />
@@ -267,7 +267,7 @@ class RegistrationForm extends Component {
                           {accNumberErrorMessage}
                         </div>
                       )}
-                      {errorMessage && !accNumb && (
+                      {errorMessage && !acc_no && (
                         <div className="error-message-div">{errorMessage}</div>
                       )}
                     </div>
@@ -294,8 +294,8 @@ class RegistrationForm extends Component {
                       <span className="details">Phone Number</span>
                       <input
                         type="text"
-                        value={phoneNumb}
-                        name="phoneNumb"
+                        value={phone_no}
+                        name="phone_no"
                         onChange={this.changeHandler}
                         placeholder="Phone Number..."
                       />
@@ -305,7 +305,7 @@ class RegistrationForm extends Component {
                           {phoneErrorMessage}
                         </div>
                       )}
-                      {errorMessage && !phoneNumb && (
+                      {errorMessage && !phone_no && (
                         <div className="error-message-div">{errorMessage}</div>
                       )}
                     </div>
@@ -332,8 +332,8 @@ class RegistrationForm extends Component {
                       <span className="details">DOB</span>
                       <input
                         type="date"
-                        value={date}
-                        name="date"
+                        value={dob}
+                        name="dob"
                         onChange={this.changeHandler}
                         placeholder="DOB..."
                       />
@@ -343,7 +343,7 @@ class RegistrationForm extends Component {
                           {dateErrorMessage}
                         </div>
                       )}
-                      {errorMessage && !date && (
+                      {errorMessage && !dob && (
                         <div className="error-message-div">{errorMessage}</div>
                       )}
                     </div>
@@ -370,8 +370,8 @@ class RegistrationForm extends Component {
                       <span className="details">Card Number</span>
                       <input
                         type="text"
-                        value={cardNumb}
-                        name="cardNumb"
+                        value={card_number}
+                        name="card_number"
                         onChange={this.changeHandler}
                         placeholder="CardNumber..."
                       />
@@ -381,7 +381,7 @@ class RegistrationForm extends Component {
                           {cardNumberErrorMessage}
                         </div>
                       )}
-                      {errorMessage && !cardNumb && (
+                      {errorMessage && !card_number && (
                         <div className="error-message-div">{errorMessage}</div>
                       )}
                     </div>
