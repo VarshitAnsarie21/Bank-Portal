@@ -60,11 +60,33 @@ class ResetPassword extends Component {
         this.setState({ newPasswordErrorMessage: error });
       }
       if (
+        this.state.newPassword &&
+        !this.state.newPassword.match(/[A-Z]/) &&
+        !this.state.newPassword.match(/[0-9]/) &&
+        !this.state.newPassword.match(/[!@#$%^&*]/)
+      ) {
+        isValid = false;
+        error =
+          "Password should contain atleast one lowercase, one uppercase, one numeric value and one special character";
+        this.setState({ newPasswordErrorMessage: error });
+      }
+      if (
         this.state.newPasswordConfirmed &&
         this.state.newPasswordConfirmed.length > 25
       ) {
         isValid = false;
         error = "Password should be upto 25 characters";
+        this.setState({ newPasswordConfirmedErrorMessage: error });
+      }
+      if (
+        this.state.newPasswordConfirmed &&
+        !this.state.newPasswordConfirmed.match(/[A-Z]/) &&
+        !this.state.newPasswordConfirmed.match(/[0-9]/) &&
+        !this.state.newPasswordConfirmed.match(/[!@#$%^&*]/)
+      ) {
+        isValid = false;
+        error =
+          "Password should contain atleast one lowercase, one uppercase, one numeric value and one special character";
         this.setState({ newPasswordConfirmedErrorMessage: error });
       }
       if (

@@ -1,10 +1,16 @@
 import React, { Component } from "react";
-import "./RegistrationForm.css";
 import { Row, Col } from "antd";
 import Card from "@mui/material/Card";
 import validator from "validator";
+import Select from "react-select";
+import "./RegistrationForm.css";
 
 let error = "";
+
+const genders = [
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+];
 
 class RegistrationForm extends Component {
   constructor(props) {
@@ -89,6 +95,17 @@ class RegistrationForm extends Component {
         error = "Invalid Phone Number! Enter only Numbers";
         this.setState({ phoneErrorMessage: error });
       }
+      if (
+        this.state.password &&
+        !this.state.password.match(/[A-Z]/) &&
+        !this.state.password.match(/[0-9]/) &&
+        !this.state.password.match(/[!@#$%^&*]/)
+      ) {
+        isValid = false;
+        error =
+          "Password should contain atleast one lowercase, one uppercase, one numeric value and one special character";
+        this.setState({ passwordErrorMessage: error });
+      }
       if (this.state.password && this.state.password.length > 25) {
         isValid = false;
         error = "Password should be upto 25 characters";
@@ -164,7 +181,7 @@ class RegistrationForm extends Component {
     if (this.validation()) {
       alert("Registered Successfully !");
     } else {
-      alert("incorrect details! Fill the detail again");
+      alert("Incorrect details! Fill the detail again");
     }
     // alert(
     //   `${this.state.custName} ${this.state.accNumb}  Registered Successfully !!!!`
@@ -389,7 +406,14 @@ class RegistrationForm extends Component {
                     </div>
                     <div className="input-box">
                       <span className="details">Gender</span>
-                      <select
+                      <Select
+                        name="gender"
+                        value={gender}
+                        className="registration-form-dropdown"
+                        options={genders}
+                        onChange={this.changeHandler}
+                      />
+                      {/* <select
                         onChange={this.changeHandler}
                         name="gender"
                         value={gender}
@@ -398,7 +422,7 @@ class RegistrationForm extends Component {
                         <option defaultValue>Select Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
-                      </select>
+                      </select> */}
                       <br />
                       {genderErrorMessage && (
                         <div className="error-message-div">

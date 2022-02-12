@@ -1,4 +1,4 @@
- @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 .registration-form-container {
   font-family: GlacialIndifference;
@@ -82,36 +82,70 @@
   cursor: pointer;
   transition: all 0.3s ease;
   background: #9b59b6;
-} 
+}
 
-.registration-form-container form .button input:hover { 
-  transform: scale(0.99); 
+.registration-form-container form .button input:hover {
+  transform: scale(0.99);
   background: #71b7e6;
 }
 
-.registration-form-container option{
-  width: 428px  !important;
+.registration-form-container option {
+  width: 428px !important;
   border-radius: 5px !important;
 }
 
-.registration-form-container select{
-  width: 428px  !important;
+.registration-form-container select {
+  width: 428px !important;
   height: 45px !important;
   padding: 10px;
   border-radius: 5px !important;
 }
 
-.registration-form-container .error-message-div{
- font-size: 15px;
- color: #fff;
- background: #c83739;
- opacity: 0.7;
- width: 420px;
- margin: 2px;
- padding: 5px;
- padding-left: 20px;
- border-radius: 5px; 
- text-align: left !important;
+.registration-form-container .error-message-div {
+  font-size: 15px;
+  color: #fff;
+  background: #c83739;
+  opacity: 0.7;
+  width: 420px;
+  margin: 2px;
+  padding: 5px;
+  padding-left: 20px;
+  border-radius: 5px;
+  text-align: left !important;
+}
+
+.registration-form-container .registration-form-dropdown {
+  width: 420px !important;
+  margin-left: 2px !important;
+}
+
+.registration-form-container .css-1s2u09g-control {
+  height: 45px !important;
+}
+
+.registration-form-container .css-14el2xx-placeholder {
+  color: hsl(0, 0%, 50%);
+  grid-area: 1/1/2/3;
+  margin-left: -300px;
+  box-sizing: border-box;
+  margin-top: -15px;
+}
+
+.registration-form-container .css-2613qy--menu {
+  padding-left: -50px !important;
+}
+
+.registration-form-container .css-1s2u09g-control:hover {
+  border-color: hsl(0, 0%, 70%);
+}
+
+.registration-form-container .css-1okebmr-indicatorSeparator{
+  margin-top: 7px !important;
+  height: 30px !important;
+}
+
+.registration-form-container .css-tlfecz-indicatorContainer{
+  padding-bottom: 22px !important;
 }
 
 /* @media (max-width: 584px) {

@@ -77,6 +77,7 @@
   display: inline-flex;
   justify-content: center;
   margin-top: 20px;
+  margin-left: 5px;
 }
 
 .contact-us-page .contact-us-dropdown-label {
@@ -87,7 +88,7 @@
   margin-top: 50px;
 }
 
-.contact-us-page .complaint-types-dropdown {
+/* .contact-us-page .complaint-types-dropdown {
   margin-left: 15px;
   margin-top: 50px;
 }
@@ -95,7 +96,7 @@
 .contact-us-page .complaint-dropdown {
   margin-left: 68px;
   margin-top: 50px;
-}
+} */
 
 .contact-us-page .btn-success {
   background-color: #fff;
@@ -121,7 +122,7 @@
   font-weight: 600 !important;
 }
 
-.contact-us-page .dropdown-menu {
+/* .contact-us-page .dropdown-menu {
   min-width: 500px;
   padding: 0.1rem 0;
   margin: 0;
@@ -152,7 +153,7 @@
   border-bottom: 0;
   border-left: 0.3em solid transparent;
   margin-left: 400px;
-}
+} */
 
 .contact-us-page .contact-us-page-submit-button {
   height: 40px;
@@ -166,6 +167,7 @@
   font-weight: 500;
   letter-spacing: 1px;
   border-radius: 5px;
+  position: relative;
 }
 
 .contact-us-page .contact-us-page-submit-button:hover {
@@ -198,6 +200,7 @@
 .feedback-col {
   display: grid !important;
   justify-content: center;
+  margin-top: 40px;
 }
 
 .contact-us-feedback-title {
@@ -254,12 +257,12 @@
   margin-right: 80px;
 }
 
-.contact-us-page .first-dropdown-row .second-dropdown-row option{
+/* .contact-us-page .first-dropdown-row .second-dropdown-row option{
   width: 425px !important;
   border-radius: 5px !important;
-}
+} */
 
-.contact-us-page .first-dropdown{
+/* .contact-us-page .first-dropdown{
   width: 428px  !important;
   height: 40px !important;
   padding: 10px;
@@ -277,4 +280,65 @@
   margin-top: 45px;
   margin-left: 66px;
   border: #fff !important;
+} */
+
+.contact-us-complaint-type-dropdown {
+  width: 280px !important;
+  margin-left: 50px !important;
+  margin-top: 48px;
 }
+
+.contact-us-complaints-dropdown {
+  width: 280px !important;
+  margin-left: 100px !important;
+  margin-top: 45px;
+}
+
+.contact-us-page .css-14el2xx-placeholder {
+  color: hsl(0, 0%, 50%);
+  grid-area: 1/1/2/3;
+  margin-left: -140px;
+  margin-right: 2px;
+  box-sizing: border-box;
+}
+
+.contact-us-page .css-2613qy--menu {
+  padding-left: -50px !important;
+}
+
+.contact-us-page .css-1s2u09g-control:hover {
+  border-color: hsl(0, 0%, 70%);
+}
+
+.contact-us-page .contact-us-complaint-type-div {
+  background: #fff;
+  width: 280px;
+  height: 38px;
+  text-align: "center";
+  padding-top: 3px;
+  margin-top: 50px;
+  margin-left: 50px;
+  border-radius: 2px;
+  cursor: not-allowed;
+}
+
+.contact-us-page .contact-us-complaint-type-text{
+  font-size: 20px;
+  font-family: "GlacialIndifference" !important;
+}
+
+.contact-us-page .error-message-div{
+  font-size: 15px;
+  color: #fff;
+  background: #c83739;
+  opacity: 0.7;
+  width: 280px;
+  height: 30px;
+  margin: 2px;
+  padding: 2px;
+  padding-left: 10px;
+  border-radius: 5px; 
+  text-align: left !important;
+  margin-left: 326px;
+  margin-top: 2px;
+ }
