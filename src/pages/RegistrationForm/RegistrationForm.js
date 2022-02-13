@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Button } from "antd";
 import Card from "@mui/material/Card";
 import validator from "validator";
 import Select from "react-select";
@@ -8,8 +8,8 @@ import "./RegistrationForm.css";
 let error = "";
 
 const genders = [
-  { value: "female", label: "Male" },
-  { value: "male", label: "Female" },
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
 ];
 
 class RegistrationForm extends Component {
@@ -58,10 +58,10 @@ class RegistrationForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  changeGender = (selectedGender) =>{
-    this.setState({gender: selectedGender.value})
-    console.log(this.state.gender)
-  }
+  changeGender = (selectedGender) => {
+    this.setState({ gender: selectedGender.value });
+    console.log(this.state.gender);
+  };
 
   validation = () => {
     let isValid = true;
@@ -427,7 +427,7 @@ class RegistrationForm extends Component {
                     <div className="input-box">
                       <span className="details">Gender</span>
                       <Select
-                        value={genders.find(x => x.value === gender)}
+                        value={genders.find((x) => x.value === gender)}
                         className="registration-form-dropdown"
                         options={genders}
                         onChange={this.changeGender}
@@ -454,8 +454,14 @@ class RegistrationForm extends Component {
                     </div>
                   </div>
 
-                  <div className="button">
-                    <input type="submit" value="Submit" />
+                  <div >
+                    <Button
+                      type="primary"
+                      className="registration-form-submit-button"
+                      onClick={this.handleSubmitComplaint}
+                    >
+                      SUBMIT
+                    </Button>
                   </div>
                 </form>
               </div>

@@ -38,6 +38,10 @@ class ContactUs extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  changecomplaints = (selectedcomplaints) => {
+    this.setState({ complaint: selectedcomplaints.value });
+  };
+
   complaintValidation = () => {
     let isValid = true;
 
@@ -126,11 +130,10 @@ class ContactUs extends Component {
                 Raise Request / Complaint:{" "}
               </Text>
               <Select
-                name="complaint"
-                value={complaint}
+                value={complaintsOption.find((x) => x.value === complaint)}
                 className="contact-us-complaints-dropdown"
                 options={complaintsOption}
-                onChange={this.changeHandler}
+                onChange={this.changecomplaints}
               />
               {/* <select
               // onChange={this.changeHandler}

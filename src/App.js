@@ -9,6 +9,7 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ExchangeRate from "./pages/ExchangeRate/ExchangeRate";
+import AfterCustomerLoginPage from "./pages/AfterLogin/AfterCustomerLoginPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/exchange-rate" element={<ExchangeRate />} />
           <Route path="/registration" element={<RegistrationForm />} />
+          <Route path="/after-customer-login" element={<AfterCustomerLoginPage />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />

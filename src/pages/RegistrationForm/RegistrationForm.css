@@ -89,6 +89,25 @@
   background: #71b7e6;
 }
 
+.registration-form-container .registration-form-submit-button {
+  height: 40px;
+  width: 20%;
+  margin: 45px 0;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  background: #294c7c;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.registration-form-container .registration-form-submit-button:hover {
+  background: #71b7e6;
+}
+
 .registration-form-container option {
   width: 428px !important;
   border-radius: 5px !important;
