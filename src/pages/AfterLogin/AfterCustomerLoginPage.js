@@ -39,6 +39,13 @@ class AfterCustomerLoginPage extends Component {
       if (resp.status === 200) {
         resp.json().then((result) => {
           console.warn("result", result);
+          this.setState({
+            full_name: result.UserDetails[0].full_name,
+            acc_no: result.UserDetails[0].acc_no,
+            phone_no: result.UserDetails[0].phone_no,
+            address: result.UserDetails[0].address,
+            card_number: result.UserDetails[0].card_number,
+          })
         });
       } else if (resp.status >= 400 && resp.status < 500) {
         alert("Status code " + resp.status + "!Bad Request");
