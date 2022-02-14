@@ -145,8 +145,11 @@ class Home extends Component {
         if (resp.status === 200) {
           resp.json().then((result) => {
             console.warn("result", result);
-            // alert("Successfully Login");
-            this.props.history.push({pathname: "/after-customer-login", state: data})
+            if((result.isSuccess == true) || (result.message == "User Login successfully")){
+              this.props.history.push({pathname: "/after-customer-login", state: data})
+            }else{
+              alert("Invalid User !")
+            }   
           });
         } else if (resp.status >= 400 && resp.status < 500) {
           alert("Status code " + resp.status + "!Bad Request");

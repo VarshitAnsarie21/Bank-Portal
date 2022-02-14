@@ -29,7 +29,7 @@ class AfterCustomerLoginPage extends Component {
       email: this.state.email,
     };
     fetch("http://localhost:61476/api/customer/Get_Details", {
-      method: "GET",
+      method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
