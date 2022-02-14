@@ -33,7 +33,7 @@ class Home extends Component {
       CustomerEmailErrorMessage: "",
       customerPasswordErrorMessage: "",
       adminCardErrorMessage: "",
-      customerCardErroeMessage: "",
+      customerCardErrorMessage: "",
     };
     this.adminLoginHandler = this.adminLoginHandler.bind(this);
     this.customerLoginHandler = this.customerLoginHandler.bind(this);
@@ -46,7 +46,7 @@ class Home extends Component {
   changeHandler = (e) => {
     this.setState({
       adminCardErrorMessage: "",
-      customerCardErroeMessage: "",
+      customerCardErrorMessage: "",
       adminEmailErrorMessage: "",
       adminPasswordErrorMessage: "",
       CustomerEmailErrorMessage: "",
@@ -60,12 +60,12 @@ class Home extends Component {
     if (!this.state.email && !this.state.password) {
       isValid = false;
       error = "Fill the fields";
-      this.setState({ customerCardErroeMessage: error });
+      this.setState({ customerCardErrorMessage: error });
     } else {
       if (
         this.state.email &&
-        (!validator.isEmail(this.state.password) ||
-          /[!#$%^&*.,()?"":{}|<>]/g.test(this.state.email) ||
+        (!validator.isEmail(this.state.email) ||
+          /[!#$%^&*,()?"":{}|<>]/g.test(this.state.email) ||
           this.state.email.includes("g.com"))
       ) {
         isValid = false;
@@ -80,10 +80,10 @@ class Home extends Component {
         error = "Password should be upto 25 characters";
         this.setState({ customerPasswordErrorMessage: error });
       }
-      if (!this.state.email || this.state.password) {
+      if (!this.state.email || !this.state.password) {
         isValid = false;
         error = "Fill this fields";
-        this.setState({ customerCardErroeMessage: error });
+        this.setState({ customerCardErrorMessage: error });
       } else if (
         validator.isEmail(this.state.email) &&
         this.state.password
@@ -135,7 +135,7 @@ class Home extends Component {
   };
 
   customerLoginHandler = () => {
-    if (this.customerValidation()) {
+    // if (this.customerValidation()) {
       let data = {
         email: this.state.email,
         password: this.state.password,
@@ -159,9 +159,9 @@ class Home extends Component {
           alert("Status code " + resp.status + "!Internal Server Error");
         }
       });
-    } else {
-      console.log(error);
-    }
+    // } else {
+    //   console.log(error);
+    // }
   };
 
   adminLoginHandler = () => {
@@ -214,7 +214,7 @@ class Home extends Component {
       CustomerEmailErrorMessage,
       customerPasswordErrorMessage,
       adminCardErrorMessage,
-      customerCardErroeMessage,
+      customerCardErrorMessage,
     } = this.state;
     return (
       <div className="home-page">
@@ -328,9 +328,9 @@ class Home extends Component {
                       {CustomerEmailErrorMessage}
                     </div>
                   )}
-                  {customerCardErroeMessage && !email && (
+                  {customerCardErrorMessage && !email && (
                     <div className="error-message-customer-div">
-                      {customerCardErroeMessage}
+                      {customerCardErrorMessage}
                     </div>
                   )}
                   <Input
@@ -347,9 +347,9 @@ class Home extends Component {
                       {customerPasswordErrorMessage}
                     </div>
                   )}
-                  {customerCardErroeMessage && !password && (
+                  {customerCardErrorMessage && !password && (
                     <div className="error-message-customer-div">
-                      {customerCardErroeMessage}
+                      {customerCardErrorMessage}
                     </div>
                   )}
                   <Button

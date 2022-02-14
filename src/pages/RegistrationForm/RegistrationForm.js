@@ -183,7 +183,7 @@ class RegistrationForm extends Component {
   };
 
   handleSubmit = (event) => {
-    if (this.validation()) {
+    // if (this.validation()) {
       let data = {
         full_name: this.state.full_name,
         acc_no: this.state.acc_no,
@@ -215,9 +215,9 @@ class RegistrationForm extends Component {
           alert("Status code " + resp.status + "!Internal Server Error");
         }
       });
-    } else {
-      console.log(error);
-    }
+    // } else {
+    //   console.log(error);
+    // }
   };
 
   render() {
@@ -458,7 +458,7 @@ class RegistrationForm extends Component {
                     <Button
                       type="primary"
                       className="registration-form-submit-button"
-                      onClick={this.handleSubmitComplaint}
+                      onClick={this.handleSubmit}
                     >
                       SUBMIT
                     </Button>
