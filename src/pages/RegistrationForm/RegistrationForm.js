@@ -166,7 +166,7 @@ class RegistrationForm extends Component {
         this.state.email &&
         validator.isEmail(this.state.email) &&
         this.state.phone_no &&
-        validator.isMobilePhone(this.state.phoneNumb) &&
+        validator.isMobilePhone(this.state.phone_no) &&
         this.state.password &&
         this.state.dob &&
         this.state.address &&
