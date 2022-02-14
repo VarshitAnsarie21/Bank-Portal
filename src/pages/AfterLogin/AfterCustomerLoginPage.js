@@ -31,6 +31,32 @@ class AfterCustomerLoginPage extends Component {
   handleClose = () => this.setState({ show: false });
   handleShow = () => this.setState({ show: true });
 
+  componentDidMount = () => {
+    let data = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+    fetch("http://localhost:61476/api/customer/InsertCustomer", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((resp) => {
+      if (resp.status === 200) {
+        resp.json().then((result) => {
+          console.warn("result", result);
+          alert("Successfully Registered");
+        });
+      } else if (resp.status >= 400 && resp.status < 500) {
+        alert("Status code " + resp.status + "!Bad Request");
+      } else if (resp.status >= 500 && resp.status < 600) {
+        alert("Status code " + resp.status + "!Internal Server Error");
+      }
+    });
+  };
+
   // changeHandler = (e) => {
   //   this.setState({
   //     errorMessage: "",
@@ -144,18 +170,17 @@ class AfterCustomerLoginPage extends Component {
               >
                 Account Details
               </Typography>
-              <span>NAME: </span>
+              <span>NAME:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <Input
-                placeholder="Enter your Email ID"
                 className="customer-detail-input"
                 value={full_name}
                 disabled
               />
               <br />
-              <span>EMAIL: </span>
+              <span>EMAIL: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <Input className="customer-detail-input" value={email} disabled />
               <br />
-              <span>PHONE: </span>
+              <span>PHONE: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <Input
                 className="customer-detail-input"
                 value={phone_no}

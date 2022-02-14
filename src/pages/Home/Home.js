@@ -26,8 +26,8 @@ class Home extends Component {
       index: 0,
       adminEmail: "",
       adminPassword: "",
-      customerEmail: "",
-      customerPassword: "",
+      email: "",
+      password: "",
       adminEmailErrorMessage: "",
       adminPasswordErrorMessage: "",
       CustomerEmailErrorMessage: "",
@@ -57,36 +57,36 @@ class Home extends Component {
 
   customerValidation = () => {
     let isValid = true;
-    if (!this.state.customerEmail && !this.state.customerPassword) {
+    if (!this.state.email && !this.state.password) {
       isValid = false;
       error = "Fill the fields";
       this.setState({ customerCardErroeMessage: error });
     } else {
       if (
-        this.state.customerEmail &&
-        (!validator.isEmail(this.state.customerEmail) ||
-          /[!#$%^&*.,()?"":{}|<>]/g.test(this.state.customerEmail) ||
-          this.state.customerEmail.includes("g.com"))
+        this.state.email &&
+        (!validator.isEmail(this.state.password) ||
+          /[!#$%^&*.,()?"":{}|<>]/g.test(this.state.email) ||
+          this.state.email.includes("g.com"))
       ) {
         isValid = false;
         error = "Invalid Email !";
         this.setState({ CustomerEmailErrorMessage: error });
       }
       if (
-        this.state.customerPassword &&
-        this.state.customerPassword.length > 25
+        this.state.password &&
+        this.state.password.length > 25
       ) {
         isValid = false;
         error = "Password should be upto 25 characters";
         this.setState({ customerPasswordErrorMessage: error });
       }
-      if (!this.state.customerEmail || this.state.customerPassword) {
+      if (!this.state.email || this.state.password) {
         isValid = false;
         error = "Fill this fields";
         this.setState({ customerCardErroeMessage: error });
       } else if (
-        validator.isEmail(this.state.customerEmail) &&
-        this.state.customerPassword
+        validator.isEmail(this.state.email) &&
+        this.state.password
       ) {
         error = "";
         isValid = true;
@@ -136,17 +136,69 @@ class Home extends Component {
 
   customerLoginHandler = () => {
     if (this.customerValidation()) {
-      alert("Login Successfully !");
+      let data = {
+        email: this.state.email,
+        password: this.state.password,
+      };
+      fetch("http://localhost:61476/api/customer/login", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then((resp) => {
+        if (resp.status === 200) {
+          resp.json().then((result) => {
+            console.warn("result", result);
+            alert("Successfully Login");
+          });
+        } else if (resp.status >= 400 && resp.status < 500) {
+          alert("Status code " + resp.status + "!Bad Request");
+        } else if (resp.status >= 500 && resp.status < 600) {
+          alert("Status code " + resp.status + "!Internal Server Error");
+        }
+      });
     } else {
-      alert("Incorrect Details! Fill the detail again");
+      console.log(error);
     }
   };
 
   adminLoginHandler = () => {
     if (this.adminValidation()) {
-      alert("Login Successfully !");
+      let data = {
+        full_name: this.state.full_name,
+        acc_no: this.state.acc_no,
+        email: this.state.email,
+        password: this.state.password,
+        phone_no: this.state.phone_no,
+        dob: this.state.dob,
+        address: this.state.address,
+        occupation: this.state.occupation,
+        card_number: this.state.card_number,
+        gender: this.state.gender,
+      };
+      fetch("http://localhost:61476/api/customer/InsertCustomer", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then((resp) => {
+        if (resp.status === 200) {
+          resp.json().then((result) => {
+            console.warn("result", result);
+            alert("Successfully Registered");
+          });
+        } else if (resp.status >= 400 && resp.status < 500) {
+          alert("Status code " + resp.status + "!Bad Request");
+        } else if (resp.status >= 500 && resp.status < 600) {
+          alert("Status code " + resp.status + "!Internal Server Error");
+        }
+      });
     } else {
-      alert("Incorrect Details! Fill the detail again");
+      console.log(error);
     }
   };
 
@@ -155,8 +207,8 @@ class Home extends Component {
       index,
       adminEmail,
       adminPassword,
-      customerEmail,
-      customerPassword,
+      email,
+      password,
       adminEmailErrorMessage,
       adminPasswordErrorMessage,
       CustomerEmailErrorMessage,
@@ -209,6 +261,7 @@ class Home extends Component {
                     value={adminPassword}
                     name="adminPassword"
                     onChange={this.changeHandler}
+                    type="password"
                   />
                   <br />
                   {adminPasswordErrorMessage && (
@@ -265,8 +318,8 @@ class Home extends Component {
                   <Input
                     placeholder="Enter your Email ID"
                     className="home-page-input"
-                    value={customerEmail}
-                    name="customerEmail"
+                    value={email}
+                    name="email"
                     onChange={this.changeHandler}
                   />
                   <br />
@@ -275,7 +328,7 @@ class Home extends Component {
                       {CustomerEmailErrorMessage}
                     </div>
                   )}
-                  {customerCardErroeMessage && !customerEmail && (
+                  {customerCardErroeMessage && !email && (
                     <div className="error-message-customer-div">
                       {customerCardErroeMessage}
                     </div>
@@ -283,9 +336,10 @@ class Home extends Component {
                   <Input
                     placeholder="Enter your PassWord"
                     className="home-page-input"
-                    value={customerPassword}
-                    name="customerPassword"
+                    value={password}
+                    name="password"
                     onChange={this.changeHandler}
+                    type="password"
                   />
                   <br />
                   {customerPasswordErrorMessage && (
@@ -293,7 +347,7 @@ class Home extends Component {
                       {customerPasswordErrorMessage}
                     </div>
                   )}
-                  {customerCardErroeMessage && !customerPassword && (
+                  {customerCardErroeMessage && !password && (
                     <div className="error-message-customer-div">
                       {customerCardErroeMessage}
                     </div>

@@ -84,7 +84,7 @@ class RegistrationForm extends Component {
       if (
         this.state.email &&
         (!validator.isEmail(this.state.email) ||
-          /[!#$%^&*.,()?"":{}|<>]/g.test(this.state.email) ||
+          /[!#$%^&*,()?"":{}|<>]/g.test(this.state.email) ||
           this.state.email.includes("g.com"))
       ) {
         isValid = false;
