@@ -74,6 +74,7 @@
   display: block;
   background: #fff;
   border: 1px solid #fff;
+  opacity: 0.7;
 }
 
 
@@ -85,7 +86,7 @@
   font-family: "GlacialIndifferenceBold";
 }
 
-.after-customer-login-page .after-customer-login-pagee-menu-title {
+.after-customer-login-page .after-customer-login-page-menu-title {
   font-size: 50px !important;
   font-weight: 500;
   position: relative;
