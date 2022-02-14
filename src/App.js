@@ -7,7 +7,7 @@ import Footer from "./components/Footer/Footer";
 import RegistrationForm from "./pages/RegistrationForm/RegistrationForm";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ExchangeRate from "./pages/ExchangeRate/ExchangeRate";
 import AfterCustomerLoginPage from "./pages/AfterLogin/AfterCustomerLoginPage";
 
@@ -16,15 +16,15 @@ function App() {
     <div className="App">
       <Header></Header>
       <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/exchange-rate" element={<ExchangeRate />} />
-          <Route path="/registration" element={<RegistrationForm />} />
-          <Route path="/after-customer-login" element={<AfterCustomerLoginPage />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-        </Routes>
+        <Switch>
+          <Route exact path="/" component={Home}  />
+          <Route path="/exchange-rate" component={ExchangeRate} />
+          <Route path="/registration" component={RegistrationForm} />
+          <Route path="/after-customer-login" component={AfterCustomerLoginPage} />
+          <Route path="/reset-password" component={ResetPassword} />
+          <Route path="/about-us" component={AboutUs} />
+          <Route path="/contact-us" component={ContactUs} />
+        </Switch>
       </BrowserRouter>
       <Footer></Footer>
     </div>

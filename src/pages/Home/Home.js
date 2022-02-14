@@ -14,6 +14,7 @@ import banner4 from "../../images/banner4.jpeg";
 import banner5 from "../../images/banner5.jpeg";
 import Carousel from "react-bootstrap/Carousel";
 import validator from "validator";
+import { withRouter } from "react-router-dom";
 
 const { Text } = Typography;
 
@@ -64,18 +65,14 @@ class Home extends Component {
     } else {
       if (
         this.state.email &&
-        (!validator.isEmail(this.state.email) ||
-          /[!#$%^&*,()?"":{}|<>]/g.test(this.state.email) ||
+        (/[!#$%^&*,()?"":{}|<>]/g.test(this.state.email) ||
           this.state.email.includes("g.com"))
       ) {
         isValid = false;
         error = "Invalid Email !";
         this.setState({ CustomerEmailErrorMessage: error });
       }
-      if (
-        this.state.password &&
-        this.state.password.length > 25
-      ) {
+      if (this.state.password && this.state.password.length > 25) {
         isValid = false;
         error = "Password should be upto 25 characters";
         this.setState({ customerPasswordErrorMessage: error });
@@ -84,10 +81,7 @@ class Home extends Component {
         isValid = false;
         error = "Fill this fields";
         this.setState({ customerCardErrorMessage: error });
-      } else if (
-        validator.isEmail(this.state.email) &&
-        this.state.password
-      ) {
+      } else if (validator.isEmail(this.state.email) && this.state.password) {
         error = "";
         isValid = true;
       }
@@ -135,7 +129,7 @@ class Home extends Component {
   };
 
   customerLoginHandler = () => {
-    // if (this.customerValidation()) {
+    if (this.customerValidation()) {
       let data = {
         email: this.state.email,
         password: this.state.password,
@@ -151,7 +145,8 @@ class Home extends Component {
         if (resp.status === 200) {
           resp.json().then((result) => {
             console.warn("result", result);
-            alert("Successfully Login");
+            // alert("Successfully Login");
+            this.props.history.push({pathname: "/after-customer-login", state: data})
           });
         } else if (resp.status >= 400 && resp.status < 500) {
           alert("Status code " + resp.status + "!Bad Request");
@@ -159,9 +154,9 @@ class Home extends Component {
           alert("Status code " + resp.status + "!Internal Server Error");
         }
       });
-    // } else {
-    //   console.log(error);
-    // }
+    } else {
+      console.log(error);
+    }
   };
 
   adminLoginHandler = () => {
@@ -406,4 +401,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);

@@ -1,18 +1,9 @@
 import React, { Component } from "react";
-import {
-  Row,
-  Col,
-  Button,
-  Typography,
-  Input,
-  Drawer,
-  Radio,
-  Space,
-} from "antd";
-import { Offcanvas } from "react-bootstrap";
+import { Col, Typography, Input } from "antd";
+// import { Offcanvas } from "react-bootstrap";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+// import CardMedia from "@mui/material/CardMedia";
 import "./AfterCustomerLoginPage.css";
 
 class AfterCustomerLoginPage extends Component {
@@ -21,7 +12,9 @@ class AfterCustomerLoginPage extends Component {
     this.state = {
       full_name: "",
       acc_no: "",
-      email: "",
+      email: !this.props.location.state.email
+        ? ""
+        : this.props.location.state.email,
       phone_no: "",
       address: "",
       card_number: "",
@@ -34,10 +27,9 @@ class AfterCustomerLoginPage extends Component {
   componentDidMount = () => {
     let data = {
       email: this.state.email,
-      password: this.state.password,
     };
-    fetch("http://localhost:61476/api/customer/InsertCustomer", {
-      method: "POST",
+    fetch("http://localhost:61476/api/customer/Get_Details", {
+      method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -47,7 +39,6 @@ class AfterCustomerLoginPage extends Component {
       if (resp.status === 200) {
         resp.json().then((result) => {
           console.warn("result", result);
-          alert("Successfully Registered");
         });
       } else if (resp.status >= 400 && resp.status < 500) {
         alert("Status code " + resp.status + "!Bad Request");
@@ -56,28 +47,6 @@ class AfterCustomerLoginPage extends Component {
       }
     });
   };
-
-  // changeHandler = (e) => {
-  //   this.setState({
-  //     errorMessage: "",
-  //     emailErrorMessage: "",
-  //     nameErrorMessage: "",
-  //     phoneErrorMessage: "",
-  //     passwordErrorMessage: "",
-  //     accNumberErrorMessage: "",
-  //     cardNumberErrorMessage: "",
-  //     dateErrorMessage: "",
-  //     addressErrorMessage: "",
-  //     occupationErrorMessage: "",
-  //     genderErrorMessage: "",
-  //   });
-  //   this.setState({ [e.target.name]: e.target.value });
-  // };
-
-  // changeGender = (selectedGender) => {
-  //   this.setState({ gender: selectedGender.value });
-  //   console.log(this.state.gender);
-  // };
 
   render() {
     const { full_name, acc_no, email, phone_no, address, card_number } =
