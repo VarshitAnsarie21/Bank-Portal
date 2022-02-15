@@ -129,37 +129,38 @@ class Home extends Component {
   };
 
   customerLoginHandler = () => {
-    if (this.customerValidation()) {
-      let data = {
-        email: this.state.email,
-        password: this.state.password,
-      };
-      fetch("http://localhost:61476/api/customer/login", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }).then((resp) => {
-        if (resp.status === 200) {
-          resp.json().then((result) => {
-            console.warn("result", result);
-            if((result.isSuccess === true) || (result.message === "User Login successfully")){
-              this.props.history.push({pathname: "/after-customer-login", state: data})
-            }else{
-              alert("Invalid User !")
-            }   
-          });
-        } else if (resp.status >= 400 && resp.status < 500) {
-          alert("Status code " + resp.status + "!Bad Request");
-        } else if (resp.status >= 500 && resp.status < 600) {
-          alert("Status code " + resp.status + "!Internal Server Error");
-        }
-      });
-    } else {
-      console.log(error);
-    }
+    this.props.history.push({pathname: "/after-customer-login", state: this.state})
+    // if (this.customerValidation()) {
+    //   let data = {
+    //     email: this.state.email,
+    //     password: this.state.password,
+    //   };
+    //   fetch("http://localhost:61476/api/customer/login", {
+    //     method: "POST",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   }).then((resp) => {
+    //     if (resp.status === 200) {
+    //       resp.json().then((result) => {
+    //         console.warn("result", result);
+    //         if((result.isSuccess === true) || (result.message === "User Login successfully")){
+    //           this.props.history.push({pathname: "/after-customer-login", state: data})
+    //         }else{
+    //           alert("Invalid User !")
+    //         }   
+    //       });
+    //     } else if (resp.status >= 400 && resp.status < 500) {
+    //       alert("Status code " + resp.status + "!Bad Request");
+    //     } else if (resp.status >= 500 && resp.status < 600) {
+    //       alert("Status code " + resp.status + "!Internal Server Error");
+    //     }
+    //   });
+    // } else {
+    //   console.log(error);
+    // }
   };
 
   adminLoginHandler = () => {

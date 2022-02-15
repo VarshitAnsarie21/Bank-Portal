@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Typography, Input } from "antd";
+import { Col, Typography, Input, Button } from "antd";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import "./AfterCustomerLoginPage.css";
@@ -18,9 +18,6 @@ class AfterCustomerLoginPage extends Component {
       card_number: "",
     };
   }
-
-  handleClose = () => this.setState({ show: false });
-  handleShow = () => this.setState({ show: true });
 
   componentDidMount = () => {
     let data = {
@@ -43,7 +40,7 @@ class AfterCustomerLoginPage extends Component {
             phone_no: result.UserDetails[0].phone_no,
             address: result.UserDetails[0].address,
             card_number: result.UserDetails[0].card_number,
-          })
+          });
         });
       } else if (resp.status >= 400 && resp.status < 500) {
         alert("Status code " + resp.status + "!Bad Request");
@@ -69,36 +66,16 @@ class AfterCustomerLoginPage extends Component {
               >
                 Dashboard
               </Typography>
-              <button
-                className="customer-detail-menu-button"
-                variant="primary"
-                onClick={this.handleShow}
-              >
-                Withdraw
+              <button className="customer-detail-menu-button" variant="primary">
+                <a href="/withdraw">Withdraw</a>
               </button>
               <br />
-              <button
-                className="customer-detail-menu-button"
-                variant="primary"
-                onClick={this.handleShow}
-              >
-                Deposit
+              <button className="customer-detail-menu-button" variant="primary">
+                <a href="/deposit">Deposit</a>
               </button>
               <br />
-              <button
-                className="customer-detail-menu-button"
-                variant="primary"
-                onClick={this.handleShow}
-              >
-                Service
-              </button>
-              <br />
-              <button
-                className="customer-detail-menu-button"
-                variant="primary"
-                onClick={this.handleShow}
-              >
-                Bank Statement
+              <button className="customer-detail-menu-button" variant="primary">
+                <a href="/transfer-money">Transfer Money</a>
               </button>
             </CardContent>
           </Card>

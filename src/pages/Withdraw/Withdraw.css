@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
-
-.after-customer-login-page {
+.withdraw-page {
   font-family: GlacialIndifference;
   background-image: url("../../images/background-image.png");
   width: 100%;
@@ -12,50 +10,20 @@
   display: inline-flex;
 }
 
-.after-customer-login-page .offcanvas.show {
-  transform: none;
-}
-
-.after-customer-login-page .offcanvas-start {
-  top: 2px !important;
-  left: 0;
-  bottom: 12px;
-  width: 400px;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-  transform: translateX(-100%);
-}
-
-.after-customer-login-page .offcanvas {
-  position: fixed;
-  bottom: 0;
-  z-index: 1045;
-  display: block !important;
-  flex-direction: column;
-  max-width: 100%;
-  visibility: hidden;
-  background-color: #fff;
-  background-clip: padding-box;
-  outline: 0;
-  transition: transform 0.3s ease-in-out;
-}
-
-/* .after-customer-login-page .customer-detail-menu-col */
-
-.after-customer-login-page .customer-detail-menu {
+/* .withdraw-page .withdraw-page-menu {
   width: 350px;
   min-height: 90vh;
   background: #fff;
   margin-bottom: -10px;
-}
-
-.after-customer-login-page .customer-detail-col {
+} */
+.withdraw-page .withdraw-page-detail-col {
   padding-top: 60px;
   min-width: 1800px;
   padding-left: 400px;
   display: flex;
 }
 
-.after-customer-login-page .customer-detail-card {
+.withdraw-page .withdraw-page-card {
   width: 50%;
   height: 600px;
   padding: 10px;
@@ -65,7 +33,7 @@
   border: 1px solid #fff;
 }
 
-.after-customer-login-page .customer-detail-menu-card {
+.withdraw-page .withdraw-page-menu-card {
   width: 300px;
   height: 600px;
   min-height: 90vh;
@@ -78,7 +46,7 @@
   opacity: 0.7;
 }
 
-.after-customer-login-page .after-customer-login-page-title {
+.withdraw-page .withdraw-page-title {
   font-size: 40px;
   font-weight: 500;
   position: relative;
@@ -86,7 +54,7 @@
   font-family: "GlacialIndifferenceBold";
 }
 
-.after-customer-login-page .after-customer-login-page-menu-title {
+.withdraw-page .withdraw-page-menu-title {
   font-size: 50px !important;
   font-weight: 500;
   position: relative;
@@ -94,7 +62,7 @@
   font-family: "GlacialIndifferenceBold";
 }
 
-.after-customer-login-page .customer-detail-input {
+.withdraw-page .withdraw-page-input {
   height: 45px;
   width: 400px;
   outline: none;
@@ -109,9 +77,9 @@
   margin-left: 15px;
 }
 
-.after-customer-login-page .customer-detail-menu-button {
+.withdraw-page .withdraw-page-menu-button {
   height: 40px;
-  width: 200px;
+  width: 200px !important;
   margin-top: 15px;
   outline: none;
   color: #fff;
@@ -124,7 +92,7 @@
   position: relative;
 }
 
-.after-customer-login-page span {
+.withdraw-page span {
   margin-right: 40px;
   text-align: left !important;
   color: #fff;
@@ -132,6 +100,24 @@
   font-weight: 700;
 }
 
-.after-customer-login-page a {
+.withdraw-page a{
   color: #fff;
+}
+
+.withdraw-page .withdraw-page-submit-button {
+  height: 45px;
+  width: 30%;
+  margin: 45px 0;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  background: #9b59b6;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 5px;
+}
+
+.withdraw-page .withdraw-page-submit-button:hover {
+  background: #71b7e6;
 }
