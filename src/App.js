@@ -10,6 +10,7 @@ import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ExchangeRate from "./pages/ExchangeRate/ExchangeRate";
 import AfterCustomerLoginPage from "./pages/AfterLogin/AfterCustomerLoginPage";
+import AfterAdminLoginPage from "./pages/AfterLogin/AfterAdminLoginPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/exchange-rate" component={ExchangeRate} />
           <Route path="/registration" component={RegistrationForm} />
           <Route path="/after-customer-login" component={AfterCustomerLoginPage} />
+          <Route path="/after-admin-login" component={AfterAdminLoginPage} />
           <Route path="/reset-password" component={ResetPassword} />
           <Route path="/about-us" component={AboutUs} />
           <Route path="/contact-us" component={ContactUs} />

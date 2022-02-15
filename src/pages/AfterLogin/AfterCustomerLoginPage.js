@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Col, Typography, Input } from "antd";
-// import { Offcanvas } from "react-bootstrap";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-// import CardMedia from "@mui/material/CardMedia";
 import "./AfterCustomerLoginPage.css";
 
 class AfterCustomerLoginPage extends Component {
@@ -104,39 +102,9 @@ class AfterCustomerLoginPage extends Component {
               </button>
             </CardContent>
           </Card>
-          {/* <div className="customer-detail-menu">
-            <Button
-              className="customer-detail-menu-button"
-              variant="primary"
-              onClick={this.handleShow}
-            >
-              Menu ≣
-            </Button>
-            <Button
-              className="customer-detail-menu-button"
-              variant="primary"
-              onClick={this.handleShow}
-            >
-              Menu ≣
-            </Button>
-            <Button
-              className="customer-detail-menu-button"
-              variant="primary"
-              onClick={this.handleShow}
-            >
-              Menu ≣
-            </Button>
-          </div> */}
         </Col>
         <Col span={18} className="customer-detail-col">
           <Card variant="outlined" className="customer-detail-card">
-            {/* <Button
-                className="customer-detail-menu-button"
-                variant="primary"
-                onClick={this.handleShow}
-              >
-                Menu ≣
-              </Button> */}
             <CardContent>
               <Typography
                 gutterBottom

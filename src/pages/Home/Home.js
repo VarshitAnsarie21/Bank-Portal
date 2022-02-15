@@ -187,7 +187,7 @@ class Home extends Component {
         if (resp.status === 200) {
           resp.json().then((result) => {
             console.warn("result", result);
-            alert("Successfully Registered");
+            this.props.history.push({pathname: "/after-admin-login"})
           });
         } else if (resp.status >= 400 && resp.status < 500) {
           alert("Status code " + resp.status + "!Bad Request");
@@ -280,12 +280,6 @@ class Home extends Component {
                     Login
                   </Button>
                   <br />
-                  {/* <Text className="home-page-text">
-                    Not a Registered Admin?
-                  </Text>{" "}
-                  <a className="home-page-hyperlink" href="/registration">
-                    Sign Up
-                  </a> */}
                   <hr />
                   <Text className="home-page-text">
                     Reset Your PassWord!
