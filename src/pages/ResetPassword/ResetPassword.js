@@ -14,7 +14,7 @@ class ResetPassword extends Component {
     super(props);
     this.state = {
       email: "",
-      newPassword: "",
+      password: "",
       newPasswordConfirmed: "",
       emailErrorMessage: "",
       newPasswordErrorMessage: "",
@@ -37,7 +37,7 @@ class ResetPassword extends Component {
     let isValid = true;
     if (
       !this.state.email &&
-      !this.state.newPassword &&
+      !this.state.password &&
       !this.state.newPasswordConfirmed
     ) {
       isValid = false;
@@ -54,16 +54,16 @@ class ResetPassword extends Component {
         error = "Invalid Email !";
         this.setState({ emailErrorMessage: error });
       }
-      if (this.state.newPassword && this.state.newPassword.length > 25) {
+      if (this.state.password && this.state.password.length > 25) {
         isValid = false;
         error = "Password should be upto 25 characters";
         this.setState({ newPasswordErrorMessage: error });
       }
       if (
-        this.state.newPassword &&
-        !this.state.newPassword.match(/[A-Z]/) &&
-        !this.state.newPassword.match(/[0-9]/) &&
-        !this.state.newPassword.match(/[!@#$%^&*]/)
+        this.state.password &&
+        !this.state.password.match(/[A-Z]/) &&
+        !this.state.password.match(/[0-9]/) &&
+        !this.state.password.match(/[!@#$%^&*]/)
       ) {
         isValid = false;
         error =
@@ -112,16 +112,49 @@ class ResetPassword extends Component {
 
   resetPasswordHandler = () => {
     if (this.validation()) {
-      alert("Password Reset Successfully!");
+      if (this.state.password === this.state.newPasswordConfirmed) {
+        let data = {
+          email: this.state.email,
+          password: this.state.password,
+        };
+        fetch("http://localhost:61476/api/customer/reset_pass", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }).then((resp) => {
+          if (resp.status === 200) {
+            resp.json().then((result) => {
+              console.warn("result", result);
+              if (
+                result.isSuccess === true ||
+                result.message === "Password Updated Successfully"
+              ) {
+                alert("Password Reset Successfully");
+              } else {
+                alert("Invalid User !");
+              }
+            });
+          } else if (resp.status >= 400 && resp.status < 500) {
+            alert("Status code " + resp.status + "!Bad Request");
+          } else if (resp.status >= 500 && resp.status < 600) {
+            alert("Status code " + resp.status + "!Internal Server Error");
+          }
+        });
+      } else {
+        console.log(error);
+      }
     } else {
-      alert("Incorrect Details! Fill the detail again");
+      alert("Password Not Matched! Please check the Password");
     }
   };
 
   render() {
     const {
       email,
-      newPassword,
+      password,
       newPasswordConfirmed,
       emailErrorMessage,
       newPasswordErrorMessage,
@@ -166,7 +199,7 @@ class ResetPassword extends Component {
                   <Input
                     placeholder="Enter your new PassWord"
                     className="reset-password-input"
-                    value={newPassword}
+                    value={password}
                     name="newPassword"
                     onChange={this.changeHandler}
                   />
@@ -176,7 +209,7 @@ class ResetPassword extends Component {
                       {newPasswordErrorMessage}
                     </div>
                   )}
-                  {errorMessage && !newPassword && (
+                  {errorMessage && !password && (
                     <div className="error-message-div">{errorMessage}</div>
                   )}
                   <Input

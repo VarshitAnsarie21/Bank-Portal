@@ -84,8 +84,8 @@ class RegistrationForm extends Component {
       if (
         this.state.email &&
         (!validator.isEmail(this.state.email) ||
-          /[!#$%^&*,()?"":{}|<>]/g.test(this.state.email) ||
-          this.state.email.includes("g.com"))
+        /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/g.test(this.state.email) ||
+          this.state.email.includes("[a-z A-Z].com"))
       ) {
         isValid = false;
         error = "Invalid Email !";
@@ -101,10 +101,11 @@ class RegistrationForm extends Component {
         this.setState({ phoneErrorMessage: error });
       }
       if (
-        this.state.password &&
-        !this.state.password.match(/[A-Z]/) &&
+        this.state.password ||
+        (!this.state.password.match(/[A-Z]/) &&
+        !this.state.password.match(/[a-z]/) &&
         !this.state.password.match(/[0-9]/) &&
-        !this.state.password.match(/[!@#$%^&*]/)
+        !this.state.password.match(/[!@#$%^&*]/))
       ) {
         isValid = false;
         error =
