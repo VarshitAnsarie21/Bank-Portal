@@ -58,16 +58,16 @@ class AfterAdminLoginPage extends Component {
     return (
       <div className="after-admin-login-page">
         <div>
-          {userDetails.map(({userDetailsArray, index}) => (
+          {userDetails.map(({acc_no,full_name,email,occupation,phone_no,address, index}) => (
               <Table className="mt-4" striped bordered hover size="sm">
               <thead>
                 <tr key={index}>
-                  <th colSpan={4} >{userDetailsArray.acc_no}</th>
-                  <th colSpan={3}>{userDetailsArray.full_name}</th>
-                  <th colSpan={3}>{userDetailsArray.email}</th>
-                  <th colSpan={3}>{userDetailsArray.occupation}</th>
-                  <th colSpan={3}>{userDetailsArray.phone_no}</th>
-                  <th colSpan={3}>{userDetailsArray.address}</th>
+                  <th colSpan={4} >{acc_no}</th>
+                  <th colSpan={3}>{full_name}</th>
+                  <th colSpan={3}>{email}</th>
+                  <th colSpan={3}>{occupation}</th>
+                  <th colSpan={3}>{phone_no}</th>
+                  <th colSpan={3}>{address}</th>
                   {/* <th colSpan={3}>Options</th> */}
                 </tr>
               </thead>
