@@ -47,8 +47,10 @@ class ResetPassword extends Component {
       if (
         this.state.email &&
         (!validator.isEmail(this.state.email) ||
-          /[!#$%^&*.,()?"":{}|<>]/g.test(this.state.email) ||
-          this.state.email.includes("g.com"))
+          /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/g.test(
+            this.state.email
+          ) ||
+          this.state.email.includes("[a-z A-Z].com"))
       ) {
         isValid = false;
         error = "Invalid Email !";
@@ -60,10 +62,10 @@ class ResetPassword extends Component {
         this.setState({ newPasswordErrorMessage: error });
       }
       if (
-        this.state.password &&
-        !this.state.password.match(/[A-Z]/) &&
-        !this.state.password.match(/[0-9]/) &&
-        !this.state.password.match(/[!@#$%^&*]/)
+        this.state.password ||
+        (!this.state.password.match(/[A-Z]/) &&
+          !this.state.password.match(/[0-9]/) &&
+          !this.state.password.match(/[!@#$%^&*]/))
       ) {
         isValid = false;
         error =
@@ -79,10 +81,10 @@ class ResetPassword extends Component {
         this.setState({ newPasswordConfirmedErrorMessage: error });
       }
       if (
-        this.state.newPasswordConfirmed &&
-        !this.state.newPasswordConfirmed.match(/[A-Z]/) &&
-        !this.state.newPasswordConfirmed.match(/[0-9]/) &&
-        !this.state.newPasswordConfirmed.match(/[!@#$%^&*]/)
+        this.state.newPasswordConfirmed ||
+        (!this.state.newPasswordConfirmed.match(/[A-Z]/) &&
+          !this.state.newPasswordConfirmed.match(/[0-9]/) &&
+          !this.state.newPasswordConfirmed.match(/[!@#$%^&*]/))
       ) {
         isValid = false;
         error =
