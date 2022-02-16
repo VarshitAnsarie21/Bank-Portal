@@ -16,6 +16,7 @@ class AfterAdminLoginPage extends Component {
       occupation: "",
       email: "",
       address: "",
+      userDetails: []
     };
   }
 
@@ -31,6 +32,7 @@ class AfterAdminLoginPage extends Component {
       if (resp.status === 200) {
         resp.json().then((result) => {
           console.warn("result", result);
+          this.setState({userDetails: result})
           let i;
           for (i = 0; i < result.length; i++) {
             this.setState({
@@ -52,11 +54,26 @@ class AfterAdminLoginPage extends Component {
   };
 
   render() {
-    const { full_name, acc_no, email, phone_no, address, occupation } = this.state;
+    const { full_name, acc_no, email, phone_no, address, occupation, userDetails } = this.state;
     return (
       <div className="after-admin-login-page">
         <div>
-          <Table className="mt-4" striped bordered hover size="sm">
+          {userDetails.map(({userDetailsArray, index}) => (
+              <Table className="mt-4" striped bordered hover size="sm">
+              <thead>
+                <tr key={index}>
+                  <th colSpan={4} >{userDetailsArray.acc_no}</th>
+                  <th colSpan={3}>{userDetailsArray.full_name}</th>
+                  <th colSpan={3}>{userDetailsArray.email}</th>
+                  <th colSpan={3}>{userDetailsArray.occupation}</th>
+                  <th colSpan={3}>{userDetailsArray.phone_no}</th>
+                  <th colSpan={3}>{userDetailsArray.address}</th>
+                  {/* <th colSpan={3}>Options</th> */}
+                </tr>
+              </thead>
+            </Table>
+          ))}
+          {/* <Table className="mt-4" striped bordered hover size="sm">
             <thead>
               <tr>
                 <th colSpan={4}>{acc_no}</th>
@@ -65,10 +82,10 @@ class AfterAdminLoginPage extends Component {
                 <th colSpan={3}>{occupation}</th>
                 <th colSpan={3}>{phone_no}</th>
                 <th colSpan={3}>{address}</th>
-                {/* <th colSpan={3}>Options</th> */}
+                <th colSpan={3}>Options</th>
               </tr>
             </thead>
-          </Table>
+          </Table> */}
         </div>
       </div>
     );
