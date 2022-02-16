@@ -8,3 +8,37 @@
     padding-top: 5px;
     background-size: cover;
   }
+
+  .after-admin-login-page .after-admin-login-input {
+    height: 45px;
+    width: 390px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    font-size: 18px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    margin-left: 5px;
+  }
+
+  .after-admin-login-page .user-details-div{
+    display: flex;
+    padding: 10px;
+  }
+
+  .after-admin-login-page .user-details--tile-div{
+    text-align: "center";
+    justify-content: "space-between";
+  }
+
+  .after-admin-login-page span{
+    height: 45px;
+    width: 390px;
+    outline: none;
+    color: #fff;
+    font-size: 30px;
+    margin-left: 50px;
+    margin-right: 120px;
+  }

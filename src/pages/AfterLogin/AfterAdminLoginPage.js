@@ -10,15 +10,13 @@ class AfterAdminLoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      acc_no: "",
-      full_name: "",
-      phone_no: "",
-      occupation: "",
-      email: "",
-      address: "",
-      userDetails: []
+      userDetails: [],
     };
   }
+
+  changeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   componentDidMount = () => {
     fetch("http://localhost:61476/admin/allcustomer", {
@@ -32,18 +30,7 @@ class AfterAdminLoginPage extends Component {
       if (resp.status === 200) {
         resp.json().then((result) => {
           console.warn("result", result);
-          this.setState({userDetails: result})
-          let i;
-          for (i = 0; i < result.length; i++) {
-            this.setState({
-              full_name: result[i].full_name,
-              acc_no: result[i].acc_no,
-              phone_no: result[i].phone_no,
-              address: result[i].address,
-              occupation: result[i].occupation,
-              email: result[i].email,
-            });
-          }
+          this.setState({ userDetails: result });
         });
       } else if (resp.status >= 400 && resp.status < 500) {
         alert("Status code " + resp.status + "!Bad Request");
@@ -54,38 +41,86 @@ class AfterAdminLoginPage extends Component {
   };
 
   render() {
-    const { full_name, acc_no, email, phone_no, address, occupation, userDetails } = this.state;
+    const { userDetails } = this.state;
     return (
       <div className="after-admin-login-page">
         <div>
-          {userDetails.map(({acc_no,full_name,email,occupation,phone_no,address, index}) => (
-              <Table className="mt-4" striped bordered hover size="sm">
-              <thead>
-                <tr key={index}>
-                  <th colSpan={4} >{acc_no}</th>
-                  <th colSpan={3}>{full_name}</th>
-                  <th colSpan={3}>{email}</th>
-                  <th colSpan={3}>{occupation}</th>
-                  <th colSpan={3}>{phone_no}</th>
-                  <th colSpan={3}>{address}</th>
-                  {/* <th colSpan={3}>Options</th> */}
-                </tr>
-              </thead>
-            </Table>
-          ))}
-          {/* <Table className="mt-4" striped bordered hover size="sm">
-            <thead>
-              <tr>
-                <th colSpan={4}>{acc_no}</th>
-                <th colSpan={3}>{full_name}</th>
-                <th colSpan={3}>{email}</th>
-                <th colSpan={3}>{occupation}</th>
-                <th colSpan={3}>{phone_no}</th>
-                <th colSpan={3}>{address}</th>
-                <th colSpan={3}>Options</th>
-              </tr>
-            </thead>
-          </Table> */}
+          {userDetails.map(
+            ({
+              acc_no,
+              full_name,
+              email,
+              occupation,
+              phone_no,
+              address,
+              index,
+            }) => (
+              <div>
+                <div className="user-details--tile-div">
+                  <span>Account Number</span>
+                  <span>Full Name</span>
+                  <span>Email ID</span>
+                  <span>Occupation</span>
+                  <span>Phone Number</span>
+                  <span>Address</span>
+                </div>
+                <div
+                  key={index}
+                  style={{ display: "flex" }}
+                  className="user-details-div"
+                >
+                  <Input
+                    className="after-admin-login-input"
+                    name="acc_no"
+                    value={acc_no}
+                    onChange={this.changeHandler}
+                  />
+                  <Input
+                    className="after-admin-login-input"
+                    name="full_name"
+                    value={full_name}
+                    onChange={this.changeHandler}
+                  />
+                  <Input
+                    className="after-admin-login-input"
+                    name="email"
+                    value={email}
+                    onChange={this.changeHandler}
+                  />
+                  <Input
+                    className="after-admin-login-input"
+                    name="occupation"
+                    value={occupation}
+                    onChange={this.changeHandler}
+                  />
+                  <Input
+                    className="after-admin-login-input"
+                    name="phone_no"
+                    value={phone_no}
+                    onChange={this.changeHandler}
+                  />
+                  <Input
+                    className="after-admin-login-input"
+                    name="address"
+                    value={address}
+                    onChange={this.changeHandler}
+                  />
+                </div>
+              </div>
+              //   <Table className="mt-4" striped bordered hover size="sm">
+              //   <thead>
+              //     <tr key={index}>
+              //       <th colSpan={4} >{acc_no}</th>
+              //       <th colSpan={3}>{full_name}</th>
+              //       <th colSpan={3}>{email}</th>
+              //       <th colSpan={3}>{occupation}</th>
+              //       <th colSpan={3}>{phone_no}</th>
+              //       <th colSpan={3}>{address}</th>
+              //     </tr>
+              //   </thead>
+              // </Table>
+            )
+          )}
         </div>
       </div>
     );
