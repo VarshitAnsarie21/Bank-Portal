@@ -191,7 +191,7 @@ class Home extends Component {
               result.message === "Admin Login successfully"
             ) {
               this.props.history.push({
-                pathname: "//after-admin-login",
+                pathname: "/after-admin-login",
                 state: data,
               });
             } else {
@@ -212,8 +212,8 @@ class Home extends Component {
   render() {
     const {
       index,
-      adminEmail,
-      adminPassword,
+      admin_email,
+      admin_password,
       email,
       password,
       adminEmailErrorMessage,
@@ -247,8 +247,8 @@ class Home extends Component {
                   <Input
                     placeholder="Enter your Email ID"
                     className="home-page-input"
-                    name="adminEmail"
-                    value={adminEmail}
+                    name="admin_email"
+                    value={admin_email}
                     onChange={this.changeHandler}
                   />
                   <br />
@@ -257,7 +257,7 @@ class Home extends Component {
                       {adminEmailErrorMessage}
                     </div>
                   )}
-                  {adminCardErrorMessage && !adminEmail && (
+                  {adminCardErrorMessage && !admin_email && (
                     <div className="error-message-admin-div">
                       {adminCardErrorMessage}
                     </div>
@@ -265,8 +265,8 @@ class Home extends Component {
                   <Input
                     placeholder="Enter your PassWord"
                     className="home-page-input"
-                    value={adminPassword}
-                    name="adminPassword"
+                    value={admin_password}
+                    name="admin_password"
                     onChange={this.changeHandler}
                     type="password"
                   />
@@ -276,7 +276,7 @@ class Home extends Component {
                       {adminPasswordErrorMessage}
                     </div>
                   )}
-                  {adminCardErrorMessage && !adminPassword && (
+                  {adminCardErrorMessage && !admin_password && (
                     <div className="error-message-admin-div">
                       {adminCardErrorMessage}
                     </div>
