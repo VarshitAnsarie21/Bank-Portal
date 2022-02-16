@@ -9,9 +9,17 @@ import { button, ButtonToolbar } from "react-bootstrap";
 class AfterAdminLoginPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      acc_no: "",
+      full_name: "",
+      phone_no: "",
+      occupation: "",
+      email: "",
+      address: "",
+    };
   }
 
-  componentDidMount = () =>{
+  componentDidMount = () => {
     fetch("http://localhost:61476/admin/allcustomer", {
       method: "GET",
       headers: {
@@ -23,13 +31,17 @@ class AfterAdminLoginPage extends Component {
       if (resp.status === 200) {
         resp.json().then((result) => {
           console.warn("result", result);
-          this.setState({
-            full_name: result.UserDetails[0].full_name,
-            acc_no: result.UserDetails[0].acc_no,
-            phone_no: result.UserDetails[0].phone_no,
-            address: result.UserDetails[0].address,
-            card_number: result.UserDetails[0].card_number,
-          });
+          let i;
+          for (i = 0; i < result.length; i++) {
+            this.setState({
+              full_name: result[i].full_name,
+              acc_no: result[i].acc_no,
+              phone_no: result[i].phone_no,
+              address: result[i].address,
+              occupation: result[i].occupation,
+              email: result[i].email,
+            });
+          }
         });
       } else if (resp.status >= 400 && resp.status < 500) {
         alert("Status code " + resp.status + "!Bad Request");
@@ -37,22 +49,23 @@ class AfterAdminLoginPage extends Component {
         alert("Status code " + resp.status + "!Internal Server Error");
       }
     });
-  }
+  };
 
   render() {
+    const { full_name, acc_no, email, phone_no, address, occupation } = this.state;
     return (
       <div className="after-admin-login-page">
         <div>
           <Table className="mt-4" striped bordered hover size="sm">
             <thead>
               <tr>
-                <th colSpan={4}>Account No.</th>
-                <th colSpan={3}>Full Name</th>
-                <th colSpan={3}>Email Id</th>
-                <th colSpan={3}>Occupation</th>
-                <th colSpan={3}>Contact No.</th>
-                <th colSpan={3}>Permanent Address</th>
-                <th colSpan={3}>Options</th>
+                <th colSpan={4}>{acc_no}</th>
+                <th colSpan={3}>{full_name}</th>
+                <th colSpan={3}>{email}</th>
+                <th colSpan={3}>{occupation}</th>
+                <th colSpan={3}>{phone_no}</th>
+                <th colSpan={3}>{address}</th>
+                {/* <th colSpan={3}>Options</th> */}
               </tr>
             </thead>
           </Table>
