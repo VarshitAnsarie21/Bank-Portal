@@ -25,8 +25,8 @@ class Home extends Component {
     super(props);
     this.state = {
       index: 0,
-      adminEmail: "",
-      adminPassword: "",
+      admin_email: "",
+      admin_password: "",
       email: "",
       password: "",
       adminEmailErrorMessage: "",
@@ -92,33 +92,33 @@ class Home extends Component {
 
   adminValidation = () => {
     let isValid = true;
-    if (!this.state.adminEmail && !this.state.adminPassword) {
+    if (!this.state.admin_email && !this.state.admin_password) {
       isValid = false;
       error = "Fill the fields";
       this.setState({ adminCardErrorMessage: error });
     } else {
       if (
-        this.state.adminEmail &&
-        (!validator.isEmail(this.state.adminEmail) ||
-          /[!#$%^&*.,()?"":{}|<>]/g.test(this.state.adminEmail) ||
-          this.state.adminEmail.includes("g.com"))
+        this.state.admin_email &&
+        (!validator.isEmail(this.state.admin_email) ||
+          /[!#$%^&*.,()?"":{}|<>]/g.test(this.state.admin_email) ||
+          this.state.admin_email.includes("g.com"))
       ) {
         isValid = false;
         error = "Invalid Email !";
         this.setState({ adminEmailErrorMessage: error });
       }
-      if (this.state.adminPassword && this.state.adminPassword.length > 25) {
+      if (this.state.admin_password && this.state.admin_password.length > 25) {
         isValid = false;
         error = "Password should be upto 25 characters";
         this.setState({ adminPasswordErrorMessage: error });
       }
-      if (!this.state.adminEmail || !this.state.adminPassword) {
+      if (!this.state.admin_email || !this.state.admin_password) {
         isValid = false;
         error = "Fill this fields";
         this.setState({ adminCardErrorMessage: error });
       } else if (
-        validator.isEmail(this.state.adminEmail) &&
-        this.state.adminPassword
+        validator.isEmail(this.state.admin_email) &&
+        this.state.admin_password
       ) {
         error = "";
         isValid = true;
@@ -146,11 +146,17 @@ class Home extends Component {
         if (resp.status === 200) {
           resp.json().then((result) => {
             console.warn("result", result);
-            if((result.isSuccess === true) || (result.message === "User Login successfully")){
-              this.props.history.push({pathname: "/after-customer-login", state: data})
-            }else{
-              alert("Invalid User !")
-            }   
+            if (
+              result.isSuccess === true ||
+              result.message === "User Login successfully"
+            ) {
+              this.props.history.push({
+                pathname: "/after-customer-login",
+                state: data,
+              });
+            } else {
+              alert("Invalid User !");
+            }
           });
         } else if (resp.status >= 400 && resp.status < 500) {
           alert("Status code " + resp.status + "!Bad Request");
@@ -166,18 +172,10 @@ class Home extends Component {
   adminLoginHandler = () => {
     if (this.adminValidation()) {
       let data = {
-        full_name: this.state.full_name,
-        acc_no: this.state.acc_no,
-        email: this.state.email,
-        password: this.state.password,
-        phone_no: this.state.phone_no,
-        dob: this.state.dob,
-        address: this.state.address,
-        occupation: this.state.occupation,
-        card_number: this.state.card_number,
-        gender: this.state.gender,
+        admin_email: this.state.admin_email,
+        admin_password: this.state.admin_password,
       };
-      fetch("http://localhost:61476/api/customer/InsertCustomer", {
+      fetch("http://localhost:61476/api/customer/Adminlogin", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -188,7 +186,17 @@ class Home extends Component {
         if (resp.status === 200) {
           resp.json().then((result) => {
             console.warn("result", result);
-            this.props.history.push({pathname: "/after-admin-login"})
+            if (
+              result.isSuccess === true ||
+              result.message === "Admin Login successfully"
+            ) {
+              this.props.history.push({
+                pathname: "//after-admin-login",
+                state: data,
+              });
+            } else {
+              alert("Invalid User !");
+            }
           });
         } else if (resp.status >= 400 && resp.status < 500) {
           alert("Status code " + resp.status + "!Bad Request");
