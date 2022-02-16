@@ -281,13 +281,6 @@ class Home extends Component {
                     Login
                   </Button>
                   <br />
-                  <hr />
-                  <Text className="home-page-text">
-                    Reset Your PassWord!
-                  </Text>{" "}
-                  <a className="home-page-hyperlink" href="/reset-password">
-                    Here
-                  </a>
                 </CardContent>
               </Card>
             </Col>

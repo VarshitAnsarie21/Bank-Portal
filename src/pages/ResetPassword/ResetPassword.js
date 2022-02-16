@@ -200,7 +200,7 @@ class ResetPassword extends Component {
                     placeholder="Enter your new PassWord"
                     className="reset-password-input"
                     value={password}
-                    name="newPassword"
+                    name="password"
                     onChange={this.changeHandler}
                   />
                   <br />
