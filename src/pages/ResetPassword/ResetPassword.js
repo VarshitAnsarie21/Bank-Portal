@@ -47,9 +47,7 @@ class ResetPassword extends Component {
       if (
         this.state.email &&
         (!validator.isEmail(this.state.email) ||
-          /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/g.test(
-            this.state.email
-          ) ||
+          /[!#$%^&*,()?"":{}|<>]/g.test(this.state.email) ||
           this.state.email.includes("[a-z A-Z].com"))
       ) {
         isValid = false;
@@ -62,9 +60,10 @@ class ResetPassword extends Component {
         this.setState({ newPasswordErrorMessage: error });
       }
       if (
-        this.state.password ||
-        (!this.state.password.match(/[A-Z]/) &&
-          !this.state.password.match(/[0-9]/) &&
+        this.state.password &&
+        (!this.state.password.match(/[A-Z]/) ||
+          !this.state.password.match(/[a-z]/) ||
+          !this.state.password.match(/[0-9]/) ||
           !this.state.password.match(/[!@#$%^&*]/))
       ) {
         isValid = false;
@@ -81,9 +80,10 @@ class ResetPassword extends Component {
         this.setState({ newPasswordConfirmedErrorMessage: error });
       }
       if (
-        this.state.newPasswordConfirmed ||
-        (!this.state.newPasswordConfirmed.match(/[A-Z]/) &&
-          !this.state.newPasswordConfirmed.match(/[0-9]/) &&
+        this.state.newPasswordConfirmed &&
+        (!this.state.newPasswordConfirmed.match(/[A-Z]/) ||
+          !this.state.newPasswordConfirmed.match(/[a-z]/) ||
+          !this.state.newPasswordConfirmed.match(/[0-9]/) ||
           !this.state.newPasswordConfirmed.match(/[!@#$%^&*]/))
       ) {
         isValid = false;
@@ -93,7 +93,7 @@ class ResetPassword extends Component {
       }
       if (
         !this.state.email ||
-        !this.state.newPassword ||
+        !this.state.password ||
         !this.state.newPasswordConfirmed
       ) {
         isValid = false;
@@ -101,7 +101,7 @@ class ResetPassword extends Component {
         this.setState({ errorMessage: error });
       } else if (
         validator.isEmail(this.state.email) &&
-        this.state.newPassword &&
+        this.state.password &&
         this.state.newPasswordConfirmed
       ) {
         error = "";
@@ -204,6 +204,7 @@ class ResetPassword extends Component {
                     value={password}
                     name="password"
                     onChange={this.changeHandler}
+                    type="password"
                   />
                   <br />
                   {newPasswordErrorMessage && (
@@ -220,6 +221,7 @@ class ResetPassword extends Component {
                     value={newPasswordConfirmed}
                     name="newPasswordConfirmed"
                     onChange={this.changeHandler}
+                    type="password"
                   />
                   <br />
                   {newPasswordConfirmedErrorMessage && (
