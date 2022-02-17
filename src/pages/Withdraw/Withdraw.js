@@ -39,6 +39,7 @@ class Withdraw extends Component {
           console.warn("result", result);
           if (result.isSuccess === true) {
             alert("Money Successfully Withdrawn");
+            this.props.history.push("/after-customer-login");
           } else {
             alert("Request Denied !");
           }

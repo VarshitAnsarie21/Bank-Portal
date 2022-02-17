@@ -41,7 +41,8 @@ class TransferMoney extends Component {
         resp.json().then((result) => {
           console.warn("result", result);
           if (result.isSuccess === true) {
-            alert("Money Successfully Withdrawn");
+            alert("Money Successfully Transferred");
+            this.props.history.push("/after-customer-login");
           } else {
             alert("Request Denied !");
           }

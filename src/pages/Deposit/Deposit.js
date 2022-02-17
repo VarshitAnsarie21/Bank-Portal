@@ -39,7 +39,8 @@ class Deposit extends Component {
         resp.json().then((result) => {
           console.warn("result", result);
           if (result.isSuccess === true) {
-            alert("Money Successfully Withdrawn");
+            alert("Money Successfully Deposited");
+            this.props.history.push("/after-customer-login");
           } else {
             alert("Request Denied !");
           }
