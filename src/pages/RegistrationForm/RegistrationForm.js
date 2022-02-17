@@ -3,6 +3,7 @@ import { Row, Col, Button } from "antd";
 import Card from "@mui/material/Card";
 import validator from "validator";
 import Select from "react-select";
+import Header from "../../components/Header/Header"
 import "./RegistrationForm.css";
 
 let error = "";
@@ -26,6 +27,7 @@ class RegistrationForm extends Component {
       card_number: "",
       occupation: "",
       gender: "",
+      balance:"",
       errorMessage: "",
       emailErrorMessage: "",
       nameErrorMessage: "",
@@ -75,7 +77,8 @@ class RegistrationForm extends Component {
       !this.state.address &&
       !this.state.card_number &&
       !this.state.occupation &&
-      !this.state.gender
+      !this.state.gender&&
+      !this.state.balance
     ) {
       isValid = false;
       error = "Fill the fields";
@@ -84,7 +87,6 @@ class RegistrationForm extends Component {
       if (
         this.state.email &&
         (!validator.isEmail(this.state.email) ||
-          // /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/g.test(this.state.email) ||
           /[!#$%^&*,()?"":{}|<>]/g.test(this.state.email) ||
           this.state.email.includes("[a-z A-Z].com"))
       ) {
@@ -157,7 +159,8 @@ class RegistrationForm extends Component {
         !this.state.address ||
         !this.state.card_number ||
         !this.state.occupation ||
-        !this.state.gender
+        !this.state.gender ||
+        !this.state.balance
       ) {
         isValid = false;
         error = "Fill this fields";
@@ -174,7 +177,8 @@ class RegistrationForm extends Component {
         this.state.address &&
         this.state.card_number &&
         this.state.occupation &&
-        this.state.gender
+        this.state.gender &&
+        this.state.balance
       ) {
         error = "";
         isValid = true;
@@ -197,6 +201,7 @@ class RegistrationForm extends Component {
         occupation: this.state.occupation,
         card_number: this.state.card_number,
         gender: this.state.gender,
+        balance: this.state.balance
       };
       fetch("http://localhost:61476/api/customer/InsertCustomer", {
         method: "POST",
@@ -234,6 +239,7 @@ class RegistrationForm extends Component {
       card_number,
       occupation,
       gender,
+      balance,
       errorMessage,
       nameErrorMessage,
       emailErrorMessage,
@@ -247,230 +253,259 @@ class RegistrationForm extends Component {
       cardNumberErrorMessage,
     } = this.state;
     return (
-      <div className="registration-form-container">
-        <Col>
-          <Row justify="center" align="middle">
-            <Card className="registration-form-card">
-              <div className="title">Registration</div>
-              <div className="content">
-                <form onSubmit={this.handleSubmit}>
-                  <div className="user-details">
-                    <div className="input-box">
-                      <span className="details">Full Name</span>
-                      <input
-                        type="text"
-                        value={full_name}
-                        name="full_name"
-                        onChange={this.changeHandler}
-                        placeholder="CustomerFullName..."
-                      />
-                      <br />
-                      {nameErrorMessage && (
-                        <div className="error-message-div">
-                          {nameErrorMessage}
-                        </div>
-                      )}
-                      {errorMessage && !full_name && (
-                        <div className="error-message-div">{errorMessage}</div>
-                      )}
+      <React.Fragment>
+        <Header></Header>
+        <div className="registration-form-container">
+          <Col>
+            <Row justify="center" align="middle">
+              <Card className="registration-form-card">
+                <div className="title">Registration</div>
+                <div className="content">
+                  <form onSubmit={this.handleSubmit}>
+                    <div className="user-details">
+                      <div className="input-box">
+                        <span className="details">Full Name</span>
+                        <input
+                          type="text"
+                          value={full_name}
+                          name="full_name"
+                          onChange={this.changeHandler}
+                          placeholder="CustomerFullName..."
+                        />
+                        <br />
+                        {nameErrorMessage && (
+                          <div className="error-message-div">
+                            {nameErrorMessage}
+                          </div>
+                        )}
+                        {errorMessage && !full_name && (
+                          <div className="error-message-div">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
+                      <div className="input-box">
+                        <span className="details">Account Number</span>
+                        <input
+                          type="text"
+                          value={acc_no}
+                          name="acc_no"
+                          onChange={this.changeHandler}
+                          placeholder="AccountNumber..."
+                        />
+                        <br />
+                        {accNumberErrorMessage && (
+                          <div className="error-message-div">
+                            {accNumberErrorMessage}
+                          </div>
+                        )}
+                        {errorMessage && !acc_no && (
+                          <div className="error-message-div">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
+                      <div className="input-box">
+                        <span className="details">Email</span>
+                        <input
+                          type="text"
+                          value={email}
+                          name="email"
+                          onChange={this.changeHandler}
+                          placeholder="Email Address.."
+                        />
+                        <br />
+                        {emailErrorMessage && (
+                          <div className="error-message-div">
+                            {emailErrorMessage}
+                          </div>
+                        )}
+                        {errorMessage && !email && (
+                          <div className="error-message-div">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
+                      <div className="input-box">
+                        <span className="details">Phone Number</span>
+                        <input
+                          type="text"
+                          value={phone_no}
+                          name="phone_no"
+                          onChange={this.changeHandler}
+                          placeholder="Phone Number..."
+                        />
+                        <br />
+                        {phoneErrorMessage && (
+                          <div className="error-message-div">
+                            {phoneErrorMessage}
+                          </div>
+                        )}
+                        {errorMessage && !phone_no && (
+                          <div className="error-message-div">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
+                      <div className="input-box">
+                        <span className="details">Password</span>
+                        <input
+                          type="password"
+                          value={password}
+                          name="password"
+                          onChange={this.changeHandler}
+                          placeholder="Password..."
+                        />
+                        <br />
+                        {passwordErrorMessage && (
+                          <div className="error-message-div">
+                            {passwordErrorMessage}
+                          </div>
+                        )}
+                        {errorMessage && !password && (
+                          <div className="error-message-div">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
+                      <div className="input-box">
+                        <span className="details">DOB</span>
+                        <input
+                          type="date"
+                          value={dob}
+                          name="dob"
+                          onChange={this.changeHandler}
+                          placeholder="DOB..."
+                        />
+                        <br />
+                        {dateErrorMessage && (
+                          <div className="error-message-div">
+                            {dateErrorMessage}
+                          </div>
+                        )}
+                        {errorMessage && !dob && (
+                          <div className="error-message-div">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
+                      <div className="input-box">
+                        <span className="details">Address</span>
+                        <input
+                          type="text"
+                          value={address}
+                          name="address"
+                          onChange={this.changeHandler}
+                          placeholder="Address..."
+                        />
+                        <br />
+                        {addressErrorMessage && (
+                          <div className="error-message-div">
+                            {addressErrorMessage}
+                          </div>
+                        )}
+                        {errorMessage && !address && (
+                          <div className="error-message-div">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
+                      <div className="input-box">
+                        <span className="details">Card Number</span>
+                        <input
+                          type="text"
+                          value={card_number}
+                          name="card_number"
+                          onChange={this.changeHandler}
+                          placeholder="CardNumber..."
+                        />
+                        <br />
+                        {cardNumberErrorMessage && (
+                          <div className="error-message-div">
+                            {cardNumberErrorMessage}
+                          </div>
+                        )}
+                        {errorMessage && !card_number && (
+                          <div className="error-message-div">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
+                      <div className="input-box">
+                        <span className="details">Occupation</span>
+                        <input
+                          type="text"
+                          value={occupation}
+                          name="occupation"
+                          onChange={this.changeHandler}
+                          placeholder="Occupation..."
+                        />
+                        <br />
+                        {occupationErrorMessage && (
+                          <div className="error-message-div">
+                            {occupationErrorMessage}
+                          </div>
+                        )}
+                        {errorMessage && !occupation && (
+                          <div className="error-message-div">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
+                      <div className="input-box">
+                        <span className="details">Initial Deposit</span>
+                        <input
+                          type="number"
+                          value={balance}
+                          name="balance"
+                          onChange={this.changeHandler}
+                          placeholder="Initial Deposit..."
+                        />
+                        <br />
+                        {errorMessage && !balance && (
+                          <div className="error-message-div">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
+                      <div className="input-box">
+                        <span className="details">Gender</span>
+                        <Select
+                          value={genders.find((x) => x.value === gender)}
+                          className="registration-form-dropdown"
+                          options={genders}
+                          onChange={this.changeGender}
+                        />
+                        <br />
+                        {genderErrorMessage && (
+                          <div className="error-message-div">
+                            {genderErrorMessage}
+                          </div>
+                        )}
+                        {errorMessage && !gender && (
+                          <div className="error-message-div">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    <div className="input-box">
-                      <span className="details">Account Number</span>
-                      <input
-                        type="text"
-                        value={acc_no}
-                        name="acc_no"
-                        onChange={this.changeHandler}
-                        placeholder="AccountNumber..."
-                      />
-                      <br />
-                      {accNumberErrorMessage && (
-                        <div className="error-message-div">
-                          {accNumberErrorMessage}
-                        </div>
-                      )}
-                      {errorMessage && !acc_no && (
-                        <div className="error-message-div">{errorMessage}</div>
-                      )}
-                    </div>
-                    <div className="input-box">
-                      <span className="details">Email</span>
-                      <input
-                        type="text"
-                        value={email}
-                        name="email"
-                        onChange={this.changeHandler}
-                        placeholder="Email Address.."
-                      />
-                      <br />
-                      {emailErrorMessage && (
-                        <div className="error-message-div">
-                          {emailErrorMessage}
-                        </div>
-                      )}
-                      {errorMessage && !email && (
-                        <div className="error-message-div">{errorMessage}</div>
-                      )}
-                    </div>
-                    <div className="input-box">
-                      <span className="details">Phone Number</span>
-                      <input
-                        type="text"
-                        value={phone_no}
-                        name="phone_no"
-                        onChange={this.changeHandler}
-                        placeholder="Phone Number..."
-                      />
-                      <br />
-                      {phoneErrorMessage && (
-                        <div className="error-message-div">
-                          {phoneErrorMessage}
-                        </div>
-                      )}
-                      {errorMessage && !phone_no && (
-                        <div className="error-message-div">{errorMessage}</div>
-                      )}
-                    </div>
-                    <div className="input-box">
-                      <span className="details">Password</span>
-                      <input
-                        type="password"
-                        value={password}
-                        name="password"
-                        onChange={this.changeHandler}
-                        placeholder="Password..."
-                      />
-                      <br />
-                      {passwordErrorMessage && (
-                        <div className="error-message-div">
-                          {passwordErrorMessage}
-                        </div>
-                      )}
-                      {errorMessage && !password && (
-                        <div className="error-message-div">{errorMessage}</div>
-                      )}
-                    </div>
-                    <div className="input-box">
-                      <span className="details">DOB</span>
-                      <input
-                        type="date"
-                        value={dob}
-                        name="dob"
-                        onChange={this.changeHandler}
-                        placeholder="DOB..."
-                      />
-                      <br />
-                      {dateErrorMessage && (
-                        <div className="error-message-div">
-                          {dateErrorMessage}
-                        </div>
-                      )}
-                      {errorMessage && !dob && (
-                        <div className="error-message-div">{errorMessage}</div>
-                      )}
-                    </div>
-                    <div className="input-box">
-                      <span className="details">Address</span>
-                      <input
-                        type="text"
-                        value={address}
-                        name="address"
-                        onChange={this.changeHandler}
-                        placeholder="Address..."
-                      />
-                      <br />
-                      {addressErrorMessage && (
-                        <div className="error-message-div">
-                          {addressErrorMessage}
-                        </div>
-                      )}
-                      {errorMessage && !address && (
-                        <div className="error-message-div">{errorMessage}</div>
-                      )}
-                    </div>
-                    <div className="input-box">
-                      <span className="details">Card Number</span>
-                      <input
-                        type="text"
-                        value={card_number}
-                        name="card_number"
-                        onChange={this.changeHandler}
-                        placeholder="CardNumber..."
-                      />
-                      <br />
-                      {cardNumberErrorMessage && (
-                        <div className="error-message-div">
-                          {cardNumberErrorMessage}
-                        </div>
-                      )}
-                      {errorMessage && !card_number && (
-                        <div className="error-message-div">{errorMessage}</div>
-                      )}
-                    </div>
-                    <div className="input-box">
-                      <span className="details">Occupation</span>
-                      <input
-                        type="text"
-                        value={occupation}
-                        name="occupation"
-                        onChange={this.changeHandler}
-                        placeholder="Occupation..."
-                      />
-                      <br />
-                      {occupationErrorMessage && (
-                        <div className="error-message-div">
-                          {occupationErrorMessage}
-                        </div>
-                      )}
-                      {errorMessage && !occupation && (
-                        <div className="error-message-div">{errorMessage}</div>
-                      )}
-                    </div>
-                    <div className="input-box">
-                      <span className="details">Gender</span>
-                      <Select
-                        value={genders.find((x) => x.value === gender)}
-                        className="registration-form-dropdown"
-                        options={genders}
-                        onChange={this.changeGender}
-                      />
-                      {/* <select
-                        onChange={this.changeHandler}
-                        name="gender"
-                        value={gender}
-                        defaultValue="Select Gender"
-                      >
-                        <option defaultValue>Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                      </select> */}
-                      <br />
-                      {genderErrorMessage && (
-                        <div className="error-message-div">
-                          {genderErrorMessage}
-                        </div>
-                      )}
-                      {errorMessage && !gender && (
-                        <div className="error-message-div">{errorMessage}</div>
-                      )}
-                    </div>
-                  </div>
 
-                  <div>
-                    <Button
-                      type="primary"
-                      className="registration-form-submit-button"
-                      onClick={this.handleSubmit}
-                    >
-                      SUBMIT
-                    </Button>
-                  </div>
-                </form>
-              </div>
-            </Card>
-          </Row>
-        </Col>
-      </div>
+                    <div>
+                      <Button
+                        type="primary"
+                        className="registration-form-submit-button"
+                        onClick={this.handleSubmit}
+                      >
+                        SUBMIT
+                      </Button>
+                    </div>
+                  </form>
+                </div>
+              </Card>
+            </Row>
+          </Col>
+        </div>
+      </React.Fragment>
     );
   }
 }

@@ -1,12 +1,14 @@
 import React from "react";
 import { Col, Typography } from "antd";
 import "./AboutUs.css";
+import Header from "../../components/Header/Header";
 
 const { Text } = Typography;
 
 const AboutUs = () => {
   return (
-    <>
+    <React.Fragment>
+      <Header></Header>
       <div class="about-us-container">
         <div class="about-section">
           <center>
@@ -71,7 +73,7 @@ const AboutUs = () => {
           </center>
         </Col>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 export default AboutUs;

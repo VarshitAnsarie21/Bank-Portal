@@ -2,7 +2,8 @@ import * as React from "react";
 import styles from "../../Api/FixedRate.css";
 import FxItem from "../../Api/FixedRateItem";
 import { fetchExchangeRates, searchFxRates } from "../../Api/FixedRateService";
-import './ExchangeRate.css'
+import "./ExchangeRate.css";
+import Header from "../../components/Header/Header";
 
 const ExchangeRate = () => {
   const [rates, setRates] = React.useState(null);
@@ -51,27 +52,30 @@ const ExchangeRate = () => {
   }, [searchTerm, rates]);
 
   return (
-    <div className="exchange-rate-page">
-      <div className={styles.app}>
-        <h1 className="exchange-rate-title">Exchange Rates</h1>
-        <input
-          value={searchTerm}
-          placeholder="Search..."
-          onChange={onSearch}
-          className="exchange-rate-input"
-        />
-        {searchResults
-          ? Object.keys(searchResults).map((key) => (
-              <FxItem
-                key={key}
-                fxSymbol={key}
-                fxRate={searchResults[key]}
-                ratesBase={ratesBase}
-              />
-            ))
-          : []}
+    <React.Fragment>
+      <Header></Header>
+      <div className="exchange-rate-page">
+        <div className={styles.app}>
+          <h1 className="exchange-rate-title">Exchange Rates</h1>
+          <input
+            value={searchTerm}
+            placeholder="Search..."
+            onChange={onSearch}
+            className="exchange-rate-input"
+          />
+          {searchResults
+            ? Object.keys(searchResults).map((key) => (
+                <FxItem
+                  key={key}
+                  fxSymbol={key}
+                  fxRate={searchResults[key]}
+                  ratesBase={ratesBase}
+                />
+              ))
+            : []}
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -7,6 +7,7 @@ import "./Home.css";
 import Admin from "../../images/admin-logo.jpg";
 import Customer from "../../images/customer-logo.png";
 import "react-alice-carousel/lib/react-alice-carousel";
+import Header from "../../components/Header/Header"
 import banner1 from "../../images/banner1.jpg";
 import banner2 from "../../images/banner2.jpeg";
 import banner3 from "../../images/banner3.jpeg";
@@ -23,12 +24,6 @@ let error = "";
 class Home extends Component {
   constructor(props) {
     super(props);
-    // const token = localStorage.getItem("loggedUser")
-    // let loggedIn = true
-
-    // if(token == null){
-    //   loggedIn = false
-    // }
     const token = sessionStorage.getItem("loggedUser")
 
     this.state = {
@@ -43,7 +38,6 @@ class Home extends Component {
       customerPasswordErrorMessage: "",
       adminCardErrorMessage: "",
       customerCardErrorMessage: "",
-      // loggedIn
       user: token
     };
     this.adminLoginHandler = this.adminLoginHandler.bind(this);
@@ -139,7 +133,6 @@ class Home extends Component {
   };
 
   customerLoginHandler = () => {
-    // this.props.history.push({pathname: "/after-customer-login", state: this.state})
     if (this.customerValidation()) {
       let data = {
         email: this.state.email,
@@ -160,7 +153,6 @@ class Home extends Component {
               result.isSuccess === true ||
               result.message === "User Login successfully"
             ) {
-              // localStorage.setItem("loggedUser", this.state.email);
               sessionStorage.setItem("loggedUser", JSON.stringify(result))
               this.setState({loggedIn: true})
               this.props.history.push({
@@ -203,7 +195,6 @@ class Home extends Component {
               result.isSuccess === true ||
               result.message === "Admin Login successfully"
             ) {
-              // localStorage.setItem("loggedUser", this.state.admin_email);
               sessionStorage.setItem("loggedUser", JSON.stringify(result))
               this.setState({loggedIn: true})
               this.props.history.push({
@@ -245,6 +236,8 @@ class Home extends Component {
       return <Redirect to="/after-admin-login" />;
     } else {
       return (
+        <React.Fragment>
+        <Header></Header>
         <div className="home-page">
           <Col>
             <Row justify="center" className="home-page-inner-container">
@@ -417,6 +410,7 @@ class Home extends Component {
             </Carousel>
           </Row>
         </div>
+        </React.Fragment>
       );
     }
   }

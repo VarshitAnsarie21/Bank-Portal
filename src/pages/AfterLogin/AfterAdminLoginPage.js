@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Input } from "antd";
-// import Card from "@mui/material/Card";
-// import CardContent from "@mui/material/CardContent";
 import "./AfterAdminLoginPage.css";
-// import { Table } from "react-bootstrap";
-// import { button, ButtonToolbar } from "react-bootstrap";
+import AfterLoginHeader from "../../components/AfterLoginHeader/AfterLoginHeader";
 import { Redirect } from "react-router-dom";
 
 class AfterAdminLoginPage extends Component {
@@ -28,7 +25,6 @@ class AfterAdminLoginPage extends Component {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      // body: JSON.stringify(data),
     }).then((resp) => {
       if (resp.status === 200) {
         resp.json().then((result) => {
@@ -49,6 +45,8 @@ class AfterAdminLoginPage extends Component {
       return <Redirect to="/" />;
     } else {
       return (
+        <React.Fragment>
+          <AfterLoginHeader />
         <div className="after-admin-login-page">
           <div>
             {userDetails.map(
@@ -113,22 +111,11 @@ class AfterAdminLoginPage extends Component {
                     />
                   </div>
                 </div>
-                //   <Table className="mt-4" striped bordered hover size="sm">
-                //   <thead>
-                //     <tr key={index}>
-                //       <th colSpan={4} >{acc_no}</th>
-                //       <th colSpan={3}>{full_name}</th>
-                //       <th colSpan={3}>{email}</th>
-                //       <th colSpan={3}>{occupation}</th>
-                //       <th colSpan={3}>{phone_no}</th>
-                //       <th colSpan={3}>{address}</th>
-                //     </tr>
-                //   </thead>
-                // </Table>
               )
             )}
           </div>
         </div>
+        </React.Fragment>
       );
     }
   }

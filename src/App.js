@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Footer from "./components/Footer/Footer";
@@ -18,7 +17,6 @@ import Deposit from "./pages/Deposit/Deposit";
 function App() {
   return (
     <div className="App">
-      <Header></Header>
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home}  />

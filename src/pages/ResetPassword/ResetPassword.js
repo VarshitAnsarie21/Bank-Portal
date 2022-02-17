@@ -3,6 +3,7 @@ import { Row, Col, Input, Button, Typography } from "antd";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import Header from "../../components/Header/Header";
 import "./ResetPassword.css";
 import ResetPasswordLogo from "../../images/reset-password.jpg";
 import validator from "validator";
@@ -164,87 +165,92 @@ class ResetPassword extends Component {
       errorMessage,
     } = this.state;
     return (
-      <div className="reset-password-page">
-        <Col>
-          <Row justify="center" className="reset-password-inner-container">
-            <Col span={12} className="reset-password-col">
-              <Card variant="outlined" className="reset-password-card">
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={ResetPasswordLogo}
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    className="reset-password-title"
-                  >
-                    RESET PASSWORD
-                  </Typography>
-                  <Input
-                    placeholder="Enter your Email ID"
-                    className="reset-password-input"
-                    value={email}
-                    name="email"
-                    onChange={this.changeHandler}
+      <React.Fragment>
+        <Header></Header>
+        <div className="reset-password-page">
+          <Col>
+            <Row justify="center" className="reset-password-inner-container">
+              <Col span={12} className="reset-password-col">
+                <Card variant="outlined" className="reset-password-card">
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={ResetPasswordLogo}
+                    alt="green iguana"
                   />
-                  <br />
-                  {emailErrorMessage && (
-                    <div className="error-message-div">{emailErrorMessage}</div>
-                  )}
-                  {errorMessage && !email && (
-                    <div className="error-message-div">{errorMessage}</div>
-                  )}
-                  <Input
-                    placeholder="Enter your new PassWord"
-                    className="reset-password-input"
-                    value={password}
-                    name="password"
-                    onChange={this.changeHandler}
-                    type="password"
-                  />
-                  <br />
-                  {newPasswordErrorMessage && (
-                    <div className="error-message-div">
-                      {newPasswordErrorMessage}
-                    </div>
-                  )}
-                  {errorMessage && !password && (
-                    <div className="error-message-div">{errorMessage}</div>
-                  )}
-                  <Input
-                    placeholder="Confirm your new PassWord"
-                    className="reset-password-input"
-                    value={newPasswordConfirmed}
-                    name="newPasswordConfirmed"
-                    onChange={this.changeHandler}
-                    type="password"
-                  />
-                  <br />
-                  {newPasswordConfirmedErrorMessage && (
-                    <div className="error-message-div">
-                      {newPasswordConfirmedErrorMessage}
-                    </div>
-                  )}
-                  {errorMessage && !newPasswordConfirmed && (
-                    <div className="error-message-div">{errorMessage}</div>
-                  )}
-                  <Button
-                    type="primary"
-                    className="reset-password-login-button"
-                    onClick={this.resetPasswordHandler}
-                  >
-                    RESET
-                  </Button>
-                </CardContent>
-              </Card>
-            </Col>
-          </Row>
-        </Col>
-      </div>
+                  <CardContent>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      className="reset-password-title"
+                    >
+                      RESET PASSWORD
+                    </Typography>
+                    <Input
+                      placeholder="Enter your Email ID"
+                      className="reset-password-input"
+                      value={email}
+                      name="email"
+                      onChange={this.changeHandler}
+                    />
+                    <br />
+                    {emailErrorMessage && (
+                      <div className="error-message-div">
+                        {emailErrorMessage}
+                      </div>
+                    )}
+                    {errorMessage && !email && (
+                      <div className="error-message-div">{errorMessage}</div>
+                    )}
+                    <Input
+                      placeholder="Enter your new PassWord"
+                      className="reset-password-input"
+                      value={password}
+                      name="password"
+                      onChange={this.changeHandler}
+                      type="password"
+                    />
+                    <br />
+                    {newPasswordErrorMessage && (
+                      <div className="error-message-div">
+                        {newPasswordErrorMessage}
+                      </div>
+                    )}
+                    {errorMessage && !password && (
+                      <div className="error-message-div">{errorMessage}</div>
+                    )}
+                    <Input
+                      placeholder="Confirm your new PassWord"
+                      className="reset-password-input"
+                      value={newPasswordConfirmed}
+                      name="newPasswordConfirmed"
+                      onChange={this.changeHandler}
+                      type="password"
+                    />
+                    <br />
+                    {newPasswordConfirmedErrorMessage && (
+                      <div className="error-message-div">
+                        {newPasswordConfirmedErrorMessage}
+                      </div>
+                    )}
+                    {errorMessage && !newPasswordConfirmed && (
+                      <div className="error-message-div">{errorMessage}</div>
+                    )}
+                    <Button
+                      type="primary"
+                      className="reset-password-login-button"
+                      onClick={this.resetPasswordHandler}
+                    >
+                      RESET
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Col>
+            </Row>
+          </Col>
+        </div>
+      </React.Fragment>
     );
   }
 }
