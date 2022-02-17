@@ -23,7 +23,7 @@ class AfterCustomerLoginPage extends Component {
       // email: !this.props.location.state.email
       //   ? ""
       //   : this.props.location.state.email,
-      email: "",
+      email: token === null ? "" : token.UserDetails[0].email,
       phone_no: "",
       address: "",
       card_number: "",
@@ -33,7 +33,7 @@ class AfterCustomerLoginPage extends Component {
   }
 
   componentDidMount = () => {
-    console.log(sessionStorage.getItem("loggedUser"))
+    console.log(this.state.user.UserDetails)
     let data = {
       email: this.state.email,
     };

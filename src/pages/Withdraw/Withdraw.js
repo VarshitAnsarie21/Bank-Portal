@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Typography, Input, Button } from "antd";
+import { Col, Typography, Input } from "antd";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import "./Withdraw.css";
