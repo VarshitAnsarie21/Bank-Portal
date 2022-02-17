@@ -3,17 +3,16 @@ import { Col, Typography, Input } from "antd";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import "./Deposit.css";
+import { Redirect } from "react-router-dom";
 
 class Deposit extends Component {
   constructor(props) {
     super(props);
+    const token = sessionStorage.getItem("loggedUser");
+    const result = JSON.parse(sessionStorage.getItem('loggedUser'));
     this.state = {
-      full_name: "",
-      acc_no: "",
-      email: "",
-      phone_no: "",
-      address: "",
-      card_number: "",
+      email: result === null ? "" : result.UserDetails.email,
+      amount: ""
     };
   }
 
@@ -21,40 +20,42 @@ class Deposit extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  //   componentDidMount = () => {
-  //     let data = {
-  //       email: this.state.email,
-  //     };
-  //     fetch("http://localhost:61476/api/customer/Get_Details", {
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(data),
-  //     }).then((resp) => {
-  //       if (resp.status === 200) {
-  //         resp.json().then((result) => {
-  //           console.warn("result", result);
-  //           this.setState({
-  //             full_name: result.UserDetails[0].full_name,
-  //             acc_no: result.UserDetails[0].acc_no,
-  //             phone_no: result.UserDetails[0].phone_no,
-  //             address: result.UserDetails[0].address,
-  //             card_number: result.UserDetails[0].card_number,
-  //           });
-  //         });
-  //       } else if (resp.status >= 400 && resp.status < 500) {
-  //         alert("Status code " + resp.status + "!Bad Request");
-  //       } else if (resp.status >= 500 && resp.status < 600) {
-  //         alert("Status code " + resp.status + "!Internal Server Error");
-  //       }
-  //     });
-  //   };
+  submitHandler = () => {
+      let data = {
+        email: this.state.email,
+        amount: this.state.amount
+      };
+      fetch("http://localhost:61476/api/trans/Deposit", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then((resp) => {
+        if (resp.status === 200) {
+          resp.json().then((result) => {
+            console.warn("result", result);
+            if (result.isSuccess === true) {
+              alert("Money Successfully Withdrawn");
+            } else {
+              alert("Request Denied !");
+            }
+          });
+        } else if (resp.status >= 400 && resp.status < 500) {
+          alert("Status code " + resp.status + "!Bad Request");
+        } else if (resp.status >= 500 && resp.status < 600) {
+          alert("Status code " + resp.status + "!Internal Server Error");
+        }
+      });
+    };
 
   render() {
-    const { full_name, acc_no, email, phone_no, address, card_number } =
+    const { amount} =
       this.state;
+      if (this.state.user === null) {
+        return <Redirect to="/" />;
+      } else {
     return (
       <div className="deposit-page">
         <Col span={6} className="deposit-page-menu-col">
@@ -100,15 +101,15 @@ class Deposit extends Component {
               <span>Enter Amount:</span>&nbsp;
               <Input
                 className="deposit-page-detail-input"
-                value={full_name}
-                name="full_name"
+                value={amount}
+                name="amount"
                 onChange={this.changeHandler}
               />
               <br />
               <button
                 type="primary"
                 className="deposit-page-submit-button"
-                // onClick={this.customerLoginHandler}
+                onClick={this.submitHandler}
               >
                 Deposit
               </button>
@@ -118,6 +119,7 @@ class Deposit extends Component {
       </div>
     );
   }
+}
 }
 
 export default Deposit;

@@ -17,13 +17,14 @@ class AfterCustomerLoginPage extends Component {
     // }
 
     const token = sessionStorage.getItem("loggedUser");
+    const result = JSON.parse(sessionStorage.getItem('loggedUser'));
     this.state = {
       full_name: "",
       acc_no: "",
       // email: !this.props.location.state.email
       //   ? ""
       //   : this.props.location.state.email,
-      email: token === null ? "" : token.UserDetails[0].email,
+      email: result === null ? "" : result.UserDetails.email,
       phone_no: "",
       address: "",
       card_number: "",
@@ -33,7 +34,6 @@ class AfterCustomerLoginPage extends Component {
   }
 
   componentDidMount = () => {
-    console.log(this.state.user.UserDetails)
     let data = {
       email: this.state.email,
     };
