@@ -64,6 +64,10 @@ class Withdraw extends Component {
                 Dashboard
               </Typography>
               <button className="withdraw-page-menu-button" variant="primary">
+                <a href="/after-customer-login">Account Details</a>
+              </button>
+              <br />
+              <button className="withdraw-page-menu-button" variant="primary">
                 <a href="/withdraw">Withdraw</a>
               </button>
               <br />

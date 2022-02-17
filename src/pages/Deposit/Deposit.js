@@ -69,6 +69,10 @@ class Deposit extends Component {
                 Dashboard
               </Typography>
               <button className="deposit-page-menu-button" variant="primary">
+                <a href="/after-customer-login">Account Details</a>
+              </button>
+              <br />
+              <button className="deposit-page-menu-button" variant="primary">
                 <a href="/withdraw">Withdraw</a>
               </button>
               <br />

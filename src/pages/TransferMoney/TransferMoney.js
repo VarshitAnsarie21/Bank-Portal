@@ -65,6 +65,10 @@ class TransferMoney extends Component {
                 Dashboard
               </Typography>
               <button className="transfer-money-menu-button" variant="primary">
+                <a href="/after-customer-login">Account Details</a>
+              </button>
+              <br />
+              <button className="transfer-money-menu-button" variant="primary">
                 <a href="/withdraw">Withdraw</a>
               </button>
               <br />
