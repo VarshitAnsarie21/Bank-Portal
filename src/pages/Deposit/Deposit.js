@@ -22,6 +22,11 @@ class Deposit extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  logoutHandler = () => {
+    sessionStorage.removeItem("loggedUser");
+    this.props.history.push("/");
+  };
+
   submitHandler = () => {
     let data = {
       email: this.state.email,
@@ -54,7 +59,7 @@ class Deposit extends Component {
   };
 
   render() {
-    const { amount } = this.state;
+    const { email, amount } = this.state;
     if (this.state.user === null) {
       return <Redirect to="/" />;
     } else {
@@ -131,6 +136,14 @@ class Deposit extends Component {
                   </button>
                 </CardContent>
               </Card>
+              <span className="email-display">{email}</span>
+              <button
+                type="primary"
+                className="logout-button"
+                onClick={this.logoutHandler}
+              >
+                LOGOUT
+              </button>
             </Col>
           </div>
         </React.Fragment>

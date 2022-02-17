@@ -21,6 +21,11 @@ class Withdraw extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  logoutHandler = () => {
+    sessionStorage.removeItem("loggedUser");
+    this.props.history.push("/");
+  };
+
   submitHandler = () => {
     let data = {
       email: this.state.email,
@@ -53,7 +58,7 @@ class Withdraw extends Component {
   };
 
   render() {
-    const { amount } = this.state;
+    const { amount, email } = this.state;
     if (this.state.user === null) {
       return <Redirect to="/" />;
     } else {
@@ -116,6 +121,14 @@ class Withdraw extends Component {
                 </button>
               </CardContent>
             </Card>
+            <span className="email-display">{email}</span>
+            <button
+              type="primary"
+              className="logout-button"
+              onClick={this.logoutHandler}
+            >
+              LOGOUT
+            </button>
           </Col>
         </div>
       );

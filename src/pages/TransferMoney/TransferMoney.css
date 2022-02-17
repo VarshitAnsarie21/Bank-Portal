@@ -115,3 +115,34 @@
 .transfer-money-page .transfer-money-submit-button:hover {
   background: #71b7e6;
 }
+
+.transfer-money-page .email-display {
+  margin-left: 80px;
+  margin-top: -50px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  height: 50px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  padding-top: 10px;
+}
+
+.transfer-money-page .logout-button {
+  height: 45px;
+  width: 10%;
+  margin: -50px 0;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  background: #71b7e6;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-left: -15px;
+}
+
+.transfer-money-page .logout-button:hover {
+  background: #d62d20;
+}

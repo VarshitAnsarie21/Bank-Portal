@@ -45,7 +45,7 @@ class AfterCustomerLoginPage extends Component {
             phone_no: result.UserDetails[0].phone_no,
             address: result.UserDetails[0].address,
             card_number: result.UserDetails[0].card_number,
-            balance: result.UserDetails[0].balance
+            balance: result.UserDetails[0].balance,
           });
         });
       } else if (resp.status >= 400 && resp.status < 500) {
@@ -56,9 +56,21 @@ class AfterCustomerLoginPage extends Component {
     });
   };
 
+  logoutHandler = () =>{
+    sessionStorage.removeItem("loggedUser")
+    this.props.history.push("/")
+  }
+
   render() {
-    const { full_name, acc_no, email, phone_no, address, card_number, balance } =
-      this.state;
+    const {
+      full_name,
+      acc_no,
+      email,
+      phone_no,
+      address,
+      card_number,
+      balance,
+    } = this.state;
     if (this.state.user === null) {
       return <Redirect to="/" />;
     } else {
@@ -169,6 +181,14 @@ class AfterCustomerLoginPage extends Component {
                   />
                 </CardContent>
               </Card>
+              <span className="email-display">{email}</span>
+              <button
+                type="primary"
+                className="logout-button"
+                onClick={this.logoutHandler}
+              >
+                LOGOUT
+              </button>
             </Col>
           </div>
         </React.Fragment>
