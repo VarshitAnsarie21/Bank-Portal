@@ -39,6 +39,17 @@ class AfterAdminLoginPage extends Component {
     });
   };
 
+  deleteHandler = (index) => {
+    var userDetails = [...this.state.userDetails];
+    userDetails.splice(index, 1);
+    this.setState({ userDetails });
+  };
+
+  logoutHandler = () => {
+    sessionStorage.removeItem("loggedUser");
+    this.props.history.push("/");
+  };
+
   render() {
     const { userDetails } = this.state;
     if (this.state.user === null) {
@@ -47,27 +58,35 @@ class AfterAdminLoginPage extends Component {
       return (
         <React.Fragment>
           <AfterLoginHeader />
-        <div className="after-admin-login-page">
-          <div>
-            {userDetails.map(
-              ({
-                acc_no,
-                full_name,
-                email,
-                occupation,
-                phone_no,
-                address,
-                index,
-              }) => (
-                <div>
-                  <div className="user-details--tile-div">
-                    <span>Account Number</span>
-                    <span>Full Name</span>
-                    <span>Email ID</span>
-                    <span>Occupation</span>
-                    <span>Phone Number</span>
-                    <span>Address</span>
-                  </div>
+          <div className="after-admin-login-page">
+            <button
+              type="primary"
+              className="logout-button"
+              onClick={this.logoutHandler}
+            >
+              LOGOUT
+            </button>
+            <h1 className="after-admin-page-title">ADMIN DASHBOARD</h1>
+            <hr />
+            <div>
+              <div className="user-details--tile-div">
+                <span>Account Number</span>
+                <span>Full Name</span>
+                <span>Email ID</span>
+                <span>Occupation</span>
+                <span>Phone Number</span>
+                <span>Address</span>
+              </div>
+              {userDetails.map(
+                ({
+                  acc_no,
+                  full_name,
+                  email,
+                  occupation,
+                  phone_no,
+                  address,
+                  index,
+                }) => (
                   <div
                     key={index}
                     style={{ display: "flex" }}
@@ -109,12 +128,18 @@ class AfterAdminLoginPage extends Component {
                       value={address}
                       onChange={this.changeHandler}
                     />
+                    <button
+                      type="primary"
+                      className="delete-button"
+                      onClick={this.deleteHandler.bind(this, index)}
+                    >
+                      Delete
+                    </button>
                   </div>
-                </div>
-              )
-            )}
+                )
+              )}
+            </div>
           </div>
-        </div>
         </React.Fragment>
       );
     }
