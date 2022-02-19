@@ -76,20 +76,25 @@ class AfterAdminLoginBackup extends Component {
   //     });
   //   };
   deleteHandler = (index) => {
+    console.log(index)  
     var userDetails = [...this.state.userDetails];
     userDetails.splice(index, 1);
     this.setState({ userDetails });
+    console.log(this.state.userDetails)
   };
 
   editHandler = (index) => {
     var userDetails = [...this.state.userDetails];
+     
+    var list = userDetails.splice(index, 1);
+
     this.setState({
-      full_name: userDetails[0].full_name,
-      acc_no: userDetails[0].acc_no,
-      email: userDetails[0].email,
-      phone_no: userDetails[0].phone_no,
-      occupation: userDetails[0].occupation,
-      address: userDetails[0].address,
+      full_name: list[0].full_name,
+      acc_no: list[0].acc_no,
+      email: list[0].email,
+      phone_no: list[0].phone_no,
+      occupation: list[0].occupation,
+      address: list[0].address,
       isEdit: true,
     });
   };
@@ -163,6 +168,7 @@ class AfterAdminLoginBackup extends Component {
               }) => (
                 <div
                   key={index}
+                  id={index}
                   style={{ display: "flex" }}
                   className="user-details-div"
                 >
@@ -205,7 +211,7 @@ class AfterAdminLoginBackup extends Component {
                   <button
                     type="primary"
                     className="delete-button"
-                    onClick={this.deleteHandler.bind(this, index)}
+                    onClick={this.deleteHandler.bind(this)}
                   >
                     Delete
                   </button>

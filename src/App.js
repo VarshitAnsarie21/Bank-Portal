@@ -14,6 +14,8 @@ import Withdraw from "./pages/Withdraw/Withdraw";
 import TransferMoney from "./pages/TransferMoney/TransferMoney";
 import Deposit from "./pages/Deposit/Deposit";
 import AfterAdminLoginBackup from './pages/AfterLogin/AfterAdminLoginBackup'
+import Edit from "./pages/AfterLogin/EditCustomer";
+import Studentlist from "./pages/AfterLogin/CustomerList";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           <Route path="/transfer-money" component={TransferMoney} />
           <Route path="/deposit" component={Deposit} />
           <Route path="/after" component={AfterAdminLoginBackup} />
+          <Route path='/edit/:id' component={Edit} />  
+          <Route path='/Studentlist' component={Studentlist} /> 
           {/* <Route path="/after" component={AfterAdmin} /> */}
         </Switch>
       </BrowserRouter>
