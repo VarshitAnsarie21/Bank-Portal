@@ -39,8 +39,8 @@
   outline: none;
   color: #fff;
   font-size: 30px;
-  margin-left: -60px;
-  margin-right: 200px;
+  margin-left: -105px;
+  margin-right: 230px;
 }
 
 .after-admin-login-page .delete-button {
@@ -62,26 +62,6 @@
 .after-admin-login-page .delete-button:hover {
   background: #9b59b6;
 }
-
-/* .after-admin-login-page .edit-button {
-  height: 45px;
-  width: 5%;
-  margin-top: -2px;
-  margin-left: 40px !important;
-  outline: none;
-  color: #fff;
-  border: none;
-  font-size: 16px;
-  background: #71b7e6;
-  font-weight: 700;
-  letter-spacing: 1px;
-  border-radius: 5px;
-  margin-left: -15px;
-}
-
-.after-admin-login-page .edit-button:hover {
-  background: #9b59b6;
-} */
 
 .after-admin-login-page .logout-button {
   height: 45px;
@@ -112,4 +92,53 @@
   position: relative;
   color: #fff;
   font-family: "GlacialIndifferenceBold";
+}
+
+.after-admin-login-page .edit-button {
+  height: 45px;
+  width: 6%;
+  margin-top: -2px;
+  margin-left: 20px !important;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  background: #71b7e6;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.after-admin-login-page .edit-button:hover {
+  background: #9b59b6;
+}
+
+.after-admin-login-page .user-details-title-div span {
+  height: 45px;
+  width: 400px;
+  outline: none;
+  color: #fff;
+  font-size: 30px;
+  margin-left: 5px;
+  margin-right: 155px;
+}
+
+.after-admin-login-page .submit-details-button {
+  height: 45px;
+  width: 10%;
+  margin-top: 15px;
+  margin-left: 20px !important;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  background: #71b7e6;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 5px;
+}
+
+.after-admin-login-page .submit-details-button:hover {
+  background: #9b59b6;
 }

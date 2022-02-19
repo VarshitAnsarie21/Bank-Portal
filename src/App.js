@@ -14,7 +14,6 @@ import Withdraw from "./pages/Withdraw/Withdraw";
 import TransferMoney from "./pages/TransferMoney/TransferMoney";
 import Deposit from "./pages/Deposit/Deposit";
 import AfterAdminLoginBackup from './pages/AfterLogin/AfterAdminLoginBackup'
-import AfterAdmin from "./pages/AfterLogin/Afteradmin";
 
 function App() {
   return (
