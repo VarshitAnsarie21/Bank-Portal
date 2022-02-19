@@ -36,6 +36,7 @@ class ContactUs extends Component {
   };
 
   changecomplaints = (selectedcomplaints) => {
+    this.setState({ complaintErrorMessage: "" });
     this.setState({ complaint: selectedcomplaints.value });
   };
 

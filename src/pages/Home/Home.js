@@ -104,7 +104,7 @@ class Home extends Component {
       if (
         this.state.admin_email &&
         (!validator.isEmail(this.state.admin_email) ||
-          /[!#$%^&*.,()?"":{}|<>]/g.test(this.state.admin_email) ||
+          /[!#$%^&*,()?"":{}|<>]/g.test(this.state.admin_email) ||
           this.state.admin_email.includes("g.com"))
       ) {
         isValid = false;

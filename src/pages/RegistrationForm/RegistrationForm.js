@@ -215,6 +215,7 @@ class RegistrationForm extends Component {
           resp.json().then((result) => {
             console.warn("result", result);
             alert("Successfully Registered");
+            this.props.history.push("/")
           });
         } else if (resp.status >= 400 && resp.status < 500) {
           alert("Status code " + resp.status + "!Bad Request");

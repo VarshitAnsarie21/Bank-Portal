@@ -66,7 +66,7 @@ class AfterAdminLoginPage extends Component {
 
     // this.componentDidMount();
     // let data = email
-    fetch("http://localhost:61476/admin/delete", {
+    fetch("http://localhost:61476/admin/delete?email="+userEmail, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -81,7 +81,8 @@ class AfterAdminLoginPage extends Component {
             result.isSuccess === true ||
             result.message === "Customer deleted successfully"
           ) {
-            this.props.history.push('/after-admin-login');
+           // this.props.history.push('/after-admin-login');
+           this.componentDidMount()
           } else {
             alert("Invalid User !");
           }
