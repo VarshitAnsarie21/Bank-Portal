@@ -59,25 +59,32 @@ class AfterAdminLoginPage extends Component {
     });
   };
 
-  deleteHandler = (email) => {
+  deleteHandler = (userEmail) => {
     // var userDetails = [...this.state.userDetails];
     // userDetails.splice(index, 1);
     // this.setState({ userDetails });
 
     // this.componentDidMount();
-    let data = email
+    // let data = email
     fetch("http://localhost:61476/admin/delete", {
-      method: "PUT",
+      method: "DELETE",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+      }
+      // body: JSON.stringify(data),
     }).then((resp) => {
       if (resp.status === 200) {
         resp.json().then((result) => {
           console.warn("result", result);
-          this.setState({ userDetails: result });
+          if (
+            result.isSuccess === true ||
+            result.message === "Customer deleted successfully"
+          ) {
+            this.props.history.push('/after-admin-login');
+          } else {
+            alert("Invalid User !");
+          }
         });
       } else if (resp.status >= 400 && resp.status < 500) {
         alert("Status code " + resp.status + "!Bad Request");
