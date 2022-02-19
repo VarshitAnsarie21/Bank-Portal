@@ -59,12 +59,32 @@ class AfterAdminLoginPage extends Component {
     });
   };
 
-  deleteHandler = (index) => {
-    var userDetails = [...this.state.userDetails];
-    userDetails.splice(index, 1);
-    this.setState({ userDetails });
+  deleteHandler = (email) => {
+    // var userDetails = [...this.state.userDetails];
+    // userDetails.splice(index, 1);
+    // this.setState({ userDetails });
 
-    this.componentDidMount();
+    // this.componentDidMount();
+    let data = email
+    fetch("http://localhost:61476/admin/delete", {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((resp) => {
+      if (resp.status === 200) {
+        resp.json().then((result) => {
+          console.warn("result", result);
+          this.setState({ userDetails: result });
+        });
+      } else if (resp.status >= 400 && resp.status < 500) {
+        alert("Status code " + resp.status + "!Bad Request");
+      } else if (resp.status >= 500 && resp.status < 600) {
+        alert("Status code " + resp.status + "!Internal Server Error");
+      }
+    });
   };
 
   logoutHandler = () => {
@@ -192,7 +212,7 @@ class AfterAdminLoginPage extends Component {
                     <button
                       type="primary"
                       className="delete-button"
-                      onClick={this.deleteHandler.bind(this, index)}
+                      onClick={this.deleteHandler.bind(this, email)}
                     >
                       Delete
                     </button>

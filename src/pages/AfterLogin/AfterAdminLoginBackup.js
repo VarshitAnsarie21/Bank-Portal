@@ -75,7 +75,7 @@ class AfterAdminLoginBackup extends Component {
   //       }
   //     });
   //   };
-  deleteHandler = (index) => {
+  deleteHandler(index){
     console.log(index)  
     var userDetails = [...this.state.userDetails];
     userDetails.splice(index, 1);
@@ -168,7 +168,6 @@ class AfterAdminLoginBackup extends Component {
               }) => (
                 <div
                   key={index}
-                  id={index}
                   style={{ display: "flex" }}
                   className="user-details-div"
                 >
@@ -176,42 +175,48 @@ class AfterAdminLoginBackup extends Component {
                     className="after-admin-login-input"
                     name="acc_no"
                     value={acc_no}
+                    onChange={this.changeHandler}
                     disabled
                   />
                   <Input
                     className="after-admin-login-input"
                     name="full_name"
                     value={full_name}
+                    onChange={this.changeHandler}
                     disabled
                   />
                   <Input
                     className="after-admin-login-input"
                     name="email"
                     value={email}
+                    onChange={this.changeHandler}
                     disabled
                   />
                   <Input
                     className="after-admin-login-input"
                     name="occupation"
                     value={occupation}
+                    onChange={this.changeHandler}
                     disabled
                   />
                   <Input
                     className="after-admin-login-input"
                     name="phone_no"
                     value={phone_no}
+                    onChange={this.changeHandler}
                     disabled
                   />
                   <Input
                     className="after-admin-login-input"
                     name="address"
                     value={address}
+                    onChange={this.changeHandler}
                     disabled
                   />
                   <button
                     type="primary"
                     className="delete-button"
-                    onClick={this.deleteHandler.bind(this)}
+                    onClick={this.deleteHandler.bind(this, index)}
                   >
                     Delete
                   </button>
