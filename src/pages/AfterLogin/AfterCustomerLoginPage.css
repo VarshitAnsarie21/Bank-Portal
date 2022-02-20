@@ -7,12 +7,11 @@
   height: 100%;
   min-height: 90vh;
   padding-bottom: 10px;
-  /* padding-top: 80px; */
   background-size: cover;
   display: inline-flex;
 }
 
-.after-customer-login-page .offcanvas.show {
+/* .after-customer-login-page .offcanvas.show {
   transform: none;
 }
 
@@ -37,9 +36,7 @@
   background-clip: padding-box;
   outline: 0;
   transition: transform 0.3s ease-in-out;
-}
-
-/* .after-customer-login-page .customer-detail-menu-col */
+} */
 
 .after-customer-login-page .customer-detail-menu {
   width: 350px;

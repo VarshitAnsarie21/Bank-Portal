@@ -143,7 +143,7 @@
   align-content: center;
 }
 
-.home-page .error-message-admin-div{
+.home-page .error-message-admin-div {
   font-size: 15px;
   color: #fff;
   background: #c83739;
@@ -153,11 +153,11 @@
   margin-top: -8px;
   padding: 2px;
   padding-left: 20px;
-  border-radius: 2px; 
+  border-radius: 2px;
   text-align: left !important;
- }
+}
 
- .home-page .error-message-customer-div{
+.home-page .error-message-customer-div {
   font-size: 15px;
   color: #fff;
   background: #c83739;
@@ -167,6 +167,6 @@
   margin-top: -8px;
   padding: 2px;
   padding-left: 20px;
-  border-radius: 2px; 
+  border-radius: 2px;
   text-align: left !important;
- }
+}

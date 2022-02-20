@@ -5,17 +5,10 @@
   height: 100%;
   min-height: 90vh;
   padding-bottom: 10px;
-  /* padding-top: 80px; */
   background-size: cover;
   display: inline-flex;
 }
 
-/* .withdraw-page .withdraw-page-menu {
-  width: 350px;
-  min-height: 90vh;
-  background: #fff;
-  margin-bottom: -10px;
-} */
 .withdraw-page .withdraw-page-detail-col {
   padding-top: 60px;
   min-width: 1800px;
@@ -100,7 +93,7 @@
   font-weight: 700;
 }
 
-.withdraw-page a{
+.withdraw-page a {
   color: #fff;
 }
 

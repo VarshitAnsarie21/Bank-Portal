@@ -84,8 +84,15 @@ class ContactUs extends Component {
   handleSubmitFeedback = () => {
     if (this.feedbackValidation()) {
       alert("Feedback Submitted Successfully !");
-    } else {
-      alert(this.state.feedbackErrorMessage);
+    } else if (
+      !this.state.feedbackErrorMessage ||
+      this.state.feedbackErrorMessage === "Please Fill the Feedback Form"
+    ) {
+      alert("Please Fill the Feedback Form");
+    } else if (
+      this.state.feedbackErrorMessage === "Exceed the Limit! Maximum 50 Words Allowed"
+    ) {
+      alert("Exceed the Limit! Maximum 50 Words Allowed");
     }
   };
 

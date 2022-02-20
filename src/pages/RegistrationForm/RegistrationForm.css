@@ -158,41 +158,11 @@
   border-color: hsl(0, 0%, 70%);
 }
 
-.registration-form-container .css-1okebmr-indicatorSeparator{
+.registration-form-container .css-1okebmr-indicatorSeparator {
   margin-top: 7px !important;
   height: 30px !important;
 }
 
-.registration-form-container .css-tlfecz-indicatorContainer{
+.registration-form-container .css-tlfecz-indicatorContainer {
   padding-bottom: 22px !important;
-}
-
-/* @media (max-width: 584px) {
-  .container {
-    max-width: 100%;
-  }
-
-  form .user-details .input-box {
-    margin-bottom: 15px;
-    width: 100%;
-  }
-
-  form .category {
-    width: 100%;
-  }
-
-  .content form .user-details {
-    max-height: 300px;
-    overflow-y: scroll;
-  }
-
-  .user-details::-webkit-scrollbar {
-    width: 5px;
-  }
-} */
-
-@media (max-width: 459px) {
-  .registration-form-container .content .category {
-    flex-direction: column;
-  }
 }

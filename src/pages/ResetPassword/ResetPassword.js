@@ -121,7 +121,7 @@ class ResetPassword extends Component {
           password: this.state.password,
         };
         fetch("http://localhost:61476/api/customer/reset_pass", {
-          method: "POST",
+          method: "PUT",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -136,6 +136,7 @@ class ResetPassword extends Component {
                 result.message === "Password Updated Successfully"
               ) {
                 alert("Password Reset Successfully");
+                this.props.history.push("/");
               } else {
                 alert("Invalid User !");
               }
@@ -147,10 +148,10 @@ class ResetPassword extends Component {
           }
         });
       } else {
-        console.log(error);
+        alert("Password Not Matched! Please check the Password");
       }
     } else {
-      alert("Password Not Matched! Please check the Password");
+      console.log(error);
     }
   };
 
