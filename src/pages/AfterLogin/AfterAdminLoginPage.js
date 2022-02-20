@@ -46,33 +46,25 @@ class AfterAdminLoginPage extends Component {
     });
   };
 
-  editHandler = (index) => {
-    var userDetails = [...this.state.userDetails];
+  editHandler = (acc_no, full_name, email, phone_no, occupation, address) => {
     this.setState({
-      full_name: userDetails[0].full_name,
-      acc_no: userDetails[0].acc_no,
-      email: userDetails[0].email,
-      phone_no: userDetails[0].phone_no,
-      occupation: userDetails[0].occupation,
-      address: userDetails[0].address,
+      full_name: full_name,
+      acc_no: acc_no,
+      email: email,
+      phone_no: phone_no,
+      occupation: occupation,
+      address: address,
       isEdit: true,
     });
   };
 
   deleteHandler = (userEmail) => {
-    // var userDetails = [...this.state.userDetails];
-    // userDetails.splice(index, 1);
-    // this.setState({ userDetails });
-
-    // this.componentDidMount();
-    // let data = email
-    fetch("http://localhost:61476/admin/delete?email="+userEmail, {
+    fetch("http://localhost:61476/admin/delete?email=" + userEmail, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-      }
-      // body: JSON.stringify(data),
+      },
     }).then((resp) => {
       if (resp.status === 200) {
         resp.json().then((result) => {
@@ -81,8 +73,8 @@ class AfterAdminLoginPage extends Component {
             result.isSuccess === true ||
             result.message === "Customer deleted successfully"
           ) {
-           // this.props.history.push('/after-admin-login');
-           this.componentDidMount()
+            alert("Customer deleted successfully");
+            this.componentDidMount();
           } else {
             alert("Invalid User !");
           }
@@ -110,7 +102,7 @@ class AfterAdminLoginPage extends Component {
       address: this.state.address,
     };
     fetch("http://localhost:61476/admin/update", {
-      method: "PUT",
+      method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -120,7 +112,16 @@ class AfterAdminLoginPage extends Component {
       if (resp.status === 200) {
         resp.json().then((result) => {
           console.warn("result", result);
-          this.setState({ userDetails: result });
+          if (
+            result.isSuccess === true ||
+            result.message === "Customer updated successfully"
+          ) {
+            alert("Customer updated successfully");
+            this.setState({isEdit: false})
+            this.componentDidMount();
+          } else {
+            alert("Invalid User !");
+          }
         });
       } else if (resp.status >= 400 && resp.status < 500) {
         alert("Status code " + resp.status + "!Bad Request");
@@ -186,36 +187,42 @@ class AfterAdminLoginPage extends Component {
                       name="acc_no"
                       value={acc_no}
                       onChange={this.changeHandler}
+                      disabled
                     />
                     <Input
                       className="after-admin-login-input"
                       name="full_name"
                       value={full_name}
                       onChange={this.changeHandler}
+                      disabled
                     />
                     <Input
                       className="after-admin-login-input"
                       name="email"
                       value={email}
                       onChange={this.changeHandler}
+                      disabled
                     />
                     <Input
                       className="after-admin-login-input"
                       name="occupation"
                       value={occupation}
                       onChange={this.changeHandler}
+                      disabled
                     />
                     <Input
                       className="after-admin-login-input"
                       name="phone_no"
                       value={phone_no}
                       onChange={this.changeHandler}
+                      disabled
                     />
                     <Input
                       className="after-admin-login-input"
                       name="address"
                       value={address}
                       onChange={this.changeHandler}
+                      disabled
                     />
                     <button
                       type="primary"
@@ -227,7 +234,15 @@ class AfterAdminLoginPage extends Component {
                     <button
                       type="primary"
                       className="edit-button"
-                      onClick={this.editHandler.bind(this, index)}
+                      onClick={this.editHandler.bind(
+                        this,
+                        acc_no,
+                        full_name,
+                        email,
+                        phone_no,
+                        occupation,
+                        address
+                      )}
                     >
                       Edit
                     </button>
