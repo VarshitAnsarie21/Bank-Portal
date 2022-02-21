@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 class AfterAdminLoginPage extends Component {
   constructor(props) {
     super(props);
-    const token = sessionStorage.getItem("loggedUser");
+    const token = sessionStorage.getItem("loggedAdmin");
     this.state = {
       userDetails: [],
       user: token,
@@ -88,7 +88,7 @@ class AfterAdminLoginPage extends Component {
   };
 
   logoutHandler = () => {
-    sessionStorage.removeItem("loggedUser");
+    sessionStorage.removeItem("loggedAdmin");
     this.props.history.push("/");
   };
 

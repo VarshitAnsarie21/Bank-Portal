@@ -25,6 +25,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     const token = sessionStorage.getItem("loggedUser")
+    const token1= sessionStorage.getItem("loggedAdmin")
 
     this.state = {
       index: 0,
@@ -38,7 +39,8 @@ class Home extends Component {
       customerPasswordErrorMessage: "",
       adminCardErrorMessage: "",
       customerCardErrorMessage: "",
-      user: token
+      user: token,
+      admin: token1
     };
     this.adminLoginHandler = this.adminLoginHandler.bind(this);
     this.customerLoginHandler = this.customerLoginHandler.bind(this);
@@ -195,7 +197,7 @@ class Home extends Component {
               result.isSuccess === true ||
               result.message === "Admin Login successfully"
             ) {
-              sessionStorage.setItem("loggedUser", JSON.stringify(result))
+              sessionStorage.setItem("loggedAdmin", JSON.stringify(result))
               this.setState({loggedIn: true})
               this.props.history.push({
                 pathname: "/after-admin-login",
@@ -230,9 +232,9 @@ class Home extends Component {
       adminCardErrorMessage,
       customerCardErrorMessage,
     } = this.state;
-    if (this.state.user !== null && (email !== "" || email !== null || email !== undefined)) {
+    if (this.state.user !== null && this.state.admin === null  && (email !== "" || email !== null || email !== undefined)) {
       return <Redirect to="/after-customer-login" />;
-    } else if (this.state.user !== null && (admin_email !== null || admin_email !== null || admin_email !== undefined)) {
+    } else if (this.state.user === null && this.state.admin !== null && (admin_email !== null || admin_email !== null || admin_email !== undefined)) {
       return <Redirect to="/after-admin-login" />;
     } else {
       return (
